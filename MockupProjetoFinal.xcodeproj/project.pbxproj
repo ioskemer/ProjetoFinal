@@ -12,6 +12,9 @@
 		13E1E6CA2255635500E0F348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E1E6C82255635500E0F348 /* Main.storyboard */; };
 		13E1E6CC2255635600E0F348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13E1E6CB2255635600E0F348 /* Assets.xcassets */; };
 		13E1E6CF2255635600E0F348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E1E6CD2255635600E0F348 /* LaunchScreen.storyboard */; };
+		13E1E6DF225570F500E0F348 /* BatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6DE225570F500E0F348 /* BatchesViewController.swift */; };
+		13E1E6E32255775600E0F348 /* BatchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6E22255775600E0F348 /* BatchCollectionViewCell.swift */; };
+		13E1E6E92255846E00E0F348 /* BatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6E82255846E00E0F348 /* BatchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		13E1E6CB2255635600E0F348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13E1E6CE2255635600E0F348 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13E1E6D02255635600E0F348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13E1E6DE225570F500E0F348 /* BatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchesViewController.swift; sourceTree = "<group>"; };
+		13E1E6E22255775600E0F348 /* BatchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCollectionViewCell.swift; sourceTree = "<group>"; };
+		13E1E6E82255846E00E0F348 /* BatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 				13E1E6CB2255635600E0F348 /* Assets.xcassets */,
 				13E1E6CD2255635600E0F348 /* LaunchScreen.storyboard */,
 				13E1E6D02255635600E0F348 /* Info.plist */,
+				13E1E6E22255775600E0F348 /* BatchCollectionViewCell.swift */,
+				13E1E6DE225570F500E0F348 /* BatchesViewController.swift */,
+				13E1E6E82255846E00E0F348 /* BatchViewController.swift */,
 			);
 			path = MockupProjetoFinal;
 			sourceTree = "<group>";
@@ -135,8 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13E1E6E92255846E00E0F348 /* BatchViewController.swift in Sources */,
+				13E1E6DF225570F500E0F348 /* BatchesViewController.swift in Sources */,
 				13E1E6C72255635500E0F348 /* ViewController.swift in Sources */,
 				13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */,
+				13E1E6E32255775600E0F348 /* BatchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
