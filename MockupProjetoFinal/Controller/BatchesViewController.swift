@@ -18,7 +18,7 @@ class BatchesViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dataArray = ["Produto 1", "Produto 2", "Produto 3"]
+        dataArray = ["Produto 1", "Produto 2", "Produto 3", "Produto 4", "Produto 5", "Produto 6", "Produto 7"]
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -43,9 +43,9 @@ class BatchesViewController: UICollectionViewController {
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let next = mainStoryboard.instantiateViewController(withIdentifier: "BatchViewController") as! BatchViewController
 
-        next.teste = "LALAL s"
-        self.navigationController?.pushViewController(next, animated: true)
+        next.teste = dataArray[indexPath.row]
         
+        self.navigationController?.pushViewController(next, animated: true)
     }
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -58,4 +58,12 @@ class BatchesViewController: UICollectionViewController {
         }
     }
     */
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 }
