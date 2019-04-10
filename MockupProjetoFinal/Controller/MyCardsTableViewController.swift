@@ -14,13 +14,15 @@ class MyCardsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let buttonAdd = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(self.addCredtiCard))
+        
+        self.navigationItem.rightBarButtonItems = [buttonAdd]
     }
 
+    @objc func addCredtiCard(){
+        performSegue(withIdentifier: "newCreditCard", sender: self)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,14 +80,18 @@ class MyCardsTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        //var note = reminderNotes[self.selectedRow]
+        
+        if segue.identifier == "newCreditCard" {
+            let vc : CreditCardViewController = segue.destination as! CreditCardViewController
+            
+            vc.isNew = "true"
+           } else if segue.identifier == "editCreditCard" {
+            let vc : CreditCardViewController = segue.destination as! CreditCardViewController
+            
+            vc.isNew = "false"
+        }
     }
-    */
 
 }

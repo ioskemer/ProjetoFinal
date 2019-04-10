@@ -14,6 +14,7 @@
 		13852A04225E9F8D0058BDA7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A03225E9F8D0058BDA7 /* Alert.swift */; };
 		13852A0C225EA4330058BDA7 /* MockupProjetoFinalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A0B225EA4330058BDA7 /* MockupProjetoFinalTests.swift */; };
 		13852A22225EAC000058BDA7 /* MyCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A21225EAC000058BDA7 /* MyCardsTableViewController.swift */; };
+		13852A32225EB2E90058BDA7 /* CreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A31225EB2E90058BDA7 /* CreditCardViewController.swift */; };
 		13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6C42255635500E0F348 /* AppDelegate.swift */; };
 		13E1E6C72255635500E0F348 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6C62255635500E0F348 /* ViewController.swift */; };
 		13E1E6CA2255635500E0F348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E1E6C82255635500E0F348 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		13852A0B225EA4330058BDA7 /* MockupProjetoFinalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupProjetoFinalTests.swift; sourceTree = "<group>"; };
 		13852A0D225EA4330058BDA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13852A21225EAC000058BDA7 /* MyCardsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardsTableViewController.swift; sourceTree = "<group>"; };
+		13852A31225EB2E90058BDA7 /* CreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewController.swift; sourceTree = "<group>"; };
 		13E1E6C12255635500E0F348 /* MockupProjetoFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockupProjetoFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E1E6C42255635500E0F348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E1E6C62255635500E0F348 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				1359744822582283005318AB /* SettingsViewController.swift */,
 				1359744A2258277E005318AB /* ProfileViewController.swift */,
 				13852A21225EAC000058BDA7 /* MyCardsTableViewController.swift */,
+				13852A31225EB2E90058BDA7 /* CreditCardViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				13852A04225E9F8D0058BDA7 /* Alert.swift in Sources */,
 				13E1E6E92255846E00E0F348 /* BatchViewController.swift in Sources */,
 				1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */,
+				13852A32225EB2E90058BDA7 /* CreditCardViewController.swift in Sources */,
 				1359744922582283005318AB /* SettingsViewController.swift in Sources */,
 				13852A22225EAC000058BDA7 /* MyCardsTableViewController.swift in Sources */,
 				13E1E6DF225570F500E0F348 /* BatchesViewController.swift in Sources */,
