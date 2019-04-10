@@ -30,7 +30,7 @@ class ViewController: UIViewController {
             guard let user = result?.user
                 else {
                     print(error)
-                    
+                    Alert.display(self, "Erro no Login", "Tente novamente", "Ok!")
                     return
             }
             Analytics.setUserProperty("sim", forName: "entrou")

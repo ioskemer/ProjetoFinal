@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        email.text = UserDefaults.standard.string(forKey: "currentUserEmail")
         // Do any additional setup after loading the view.
     }
     
@@ -38,6 +38,7 @@ class ProfileViewController: UIViewController {
         let passConf = passwordConfirmation.text!
         
         if pass != passConf {
+            Alert.display(self, "Erro", "Senha e confirmação não conferem.", "Entendi")
             return
         }
         
@@ -56,5 +57,6 @@ class ProfileViewController: UIViewController {
             return
         })
         
+        Alert.display(self, "Sucesso!", "Usuário atualizado com sucesso", "Ok!")
     }
 }

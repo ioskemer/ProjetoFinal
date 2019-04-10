@@ -11,6 +11,7 @@
 		1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359744322581FB4005318AB /* MyOrdersViewController.swift */; };
 		1359744922582283005318AB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359744822582283005318AB /* SettingsViewController.swift */; };
 		1359744B2258277E005318AB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359744A2258277E005318AB /* ProfileViewController.swift */; };
+		13852A04225E9F8D0058BDA7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A03225E9F8D0058BDA7 /* Alert.swift */; };
 		13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6C42255635500E0F348 /* AppDelegate.swift */; };
 		13E1E6C72255635500E0F348 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6C62255635500E0F348 /* ViewController.swift */; };
 		13E1E6CA2255635500E0F348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E1E6C82255635500E0F348 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		1359744322581FB4005318AB /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
 		1359744822582283005318AB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1359744A2258277E005318AB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		13852A03225E9F8D0058BDA7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		13E1E6C12255635500E0F348 /* MockupProjetoFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockupProjetoFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E1E6C42255635500E0F348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E1E6C62255635500E0F348 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				13E1E6C42255635500E0F348 /* AppDelegate.swift */,
+				13852A03225E9F8D0058BDA7 /* Alert.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13852A04225E9F8D0058BDA7 /* Alert.swift in Sources */,
 				13E1E6E92255846E00E0F348 /* BatchViewController.swift in Sources */,
 				1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */,
 				1359744922582283005318AB /* SettingsViewController.swift in Sources */,
