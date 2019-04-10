@@ -12,6 +12,8 @@
 		1359744922582283005318AB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359744822582283005318AB /* SettingsViewController.swift */; };
 		1359744B2258277E005318AB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359744A2258277E005318AB /* ProfileViewController.swift */; };
 		13852A04225E9F8D0058BDA7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A03225E9F8D0058BDA7 /* Alert.swift */; };
+		13852A0C225EA4330058BDA7 /* MockupProjetoFinalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A0B225EA4330058BDA7 /* MockupProjetoFinalTests.swift */; };
+		13852A22225EAC000058BDA7 /* MyCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A21225EAC000058BDA7 /* MyCardsTableViewController.swift */; };
 		13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6C42255635500E0F348 /* AppDelegate.swift */; };
 		13E1E6C72255635500E0F348 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6C62255635500E0F348 /* ViewController.swift */; };
 		13E1E6CA2255635500E0F348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E1E6C82255635500E0F348 /* Main.storyboard */; };
@@ -23,12 +25,26 @@
 		EC3DA43790C2EFE05821CD4F /* Pods_MockupProjetoFinal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53CD978AB99970121A4FF63 /* Pods_MockupProjetoFinal.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		13852A0E225EA4330058BDA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13E1E6B92255635500E0F348 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13E1E6C02255635500E0F348;
+			remoteInfo = MockupProjetoFinal;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1359744122580B97005318AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1359744322581FB4005318AB /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
 		1359744822582283005318AB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1359744A2258277E005318AB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		13852A03225E9F8D0058BDA7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		13852A09225EA4330058BDA7 /* MockupProjetoFinalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockupProjetoFinalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		13852A0B225EA4330058BDA7 /* MockupProjetoFinalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupProjetoFinalTests.swift; sourceTree = "<group>"; };
+		13852A0D225EA4330058BDA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13852A21225EAC000058BDA7 /* MyCardsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardsTableViewController.swift; sourceTree = "<group>"; };
 		13E1E6C12255635500E0F348 /* MockupProjetoFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockupProjetoFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E1E6C42255635500E0F348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E1E6C62255635500E0F348 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +61,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		13852A06225EA4330058BDA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13E1E6BE2255635500E0F348 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,14 +108,25 @@
 				13E1E6E82255846E00E0F348 /* BatchViewController.swift */,
 				1359744822582283005318AB /* SettingsViewController.swift */,
 				1359744A2258277E005318AB /* ProfileViewController.swift */,
+				13852A21225EAC000058BDA7 /* MyCardsTableViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		13852A0A225EA4330058BDA7 /* MockupProjetoFinalTests */ = {
+			isa = PBXGroup;
+			children = (
+				13852A0B225EA4330058BDA7 /* MockupProjetoFinalTests.swift */,
+				13852A0D225EA4330058BDA7 /* Info.plist */,
+			);
+			path = MockupProjetoFinalTests;
 			sourceTree = "<group>";
 		};
 		13E1E6B82255635500E0F348 = {
 			isa = PBXGroup;
 			children = (
 				13E1E6C32255635500E0F348 /* MockupProjetoFinal */,
+				13852A0A225EA4330058BDA7 /* MockupProjetoFinalTests */,
 				13E1E6C22255635500E0F348 /* Products */,
 				42505727DEE963642B61D03B /* Pods */,
 				199CFF533DB23ACFA0D6AA46 /* Frameworks */,
@@ -103,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				13E1E6C12255635500E0F348 /* MockupProjetoFinal.app */,
+				13852A09225EA4330058BDA7 /* MockupProjetoFinalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,6 +174,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		13852A08225EA4330058BDA7 /* MockupProjetoFinalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13852A10225EA4330058BDA7 /* Build configuration list for PBXNativeTarget "MockupProjetoFinalTests" */;
+			buildPhases = (
+				13852A05225EA4330058BDA7 /* Sources */,
+				13852A06225EA4330058BDA7 /* Frameworks */,
+				13852A07225EA4330058BDA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13852A0F225EA4330058BDA7 /* PBXTargetDependency */,
+			);
+			name = MockupProjetoFinalTests;
+			productName = MockupProjetoFinalTests;
+			productReference = 13852A09225EA4330058BDA7 /* MockupProjetoFinalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		13E1E6C02255635500E0F348 /* MockupProjetoFinal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13E1E6D32255635600E0F348 /* Build configuration list for PBXNativeTarget "MockupProjetoFinal" */;
@@ -168,6 +221,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = PUCPR;
 				TargetAttributes = {
+					13852A08225EA4330058BDA7 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 13E1E6C02255635500E0F348;
+					};
 					13E1E6C02255635500E0F348 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -187,11 +244,19 @@
 			projectRoot = "";
 			targets = (
 				13E1E6C02255635500E0F348 /* MockupProjetoFinal */,
+				13852A08225EA4330058BDA7 /* MockupProjetoFinalTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		13852A07225EA4330058BDA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13E1E6BF2255635500E0F348 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -263,6 +328,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		13852A05225EA4330058BDA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13852A0C225EA4330058BDA7 /* MockupProjetoFinalTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13E1E6BD2255635500E0F348 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -271,6 +344,7 @@
 				13E1E6E92255846E00E0F348 /* BatchViewController.swift in Sources */,
 				1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */,
 				1359744922582283005318AB /* SettingsViewController.swift in Sources */,
+				13852A22225EAC000058BDA7 /* MyCardsTableViewController.swift in Sources */,
 				13E1E6DF225570F500E0F348 /* BatchesViewController.swift in Sources */,
 				13E1E6C72255635500E0F348 /* ViewController.swift in Sources */,
 				13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */,
@@ -280,6 +354,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		13852A0F225EA4330058BDA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13E1E6C02255635500E0F348 /* MockupProjetoFinal */;
+			targetProxy = 13852A0E225EA4330058BDA7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		13E1E6C82255635500E0F348 /* Main.storyboard */ = {
@@ -301,6 +383,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		13852A11225EA4330058BDA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MockupProjetoFinalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.pucpr.MockupProjetoFinalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MockupProjetoFinal.app/MockupProjetoFinal";
+			};
+			name = Debug;
+		};
+		13852A12225EA4330058BDA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MockupProjetoFinalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.pucpr.MockupProjetoFinalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MockupProjetoFinal.app/MockupProjetoFinal";
+			};
+			name = Release;
+		};
 		13E1E6D12255635600E0F348 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -456,6 +576,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		13852A10225EA4330058BDA7 /* Build configuration list for PBXNativeTarget "MockupProjetoFinalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13852A11225EA4330058BDA7 /* Debug */,
+				13852A12225EA4330058BDA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		13E1E6BC2255635500E0F348 /* Build configuration list for PBXProject "MockupProjetoFinal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

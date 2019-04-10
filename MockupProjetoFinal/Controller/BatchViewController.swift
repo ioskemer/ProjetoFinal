@@ -11,6 +11,10 @@ import UIKit
 class BatchViewController: UIViewController {
     var teste = ""
     @IBOutlet weak var productTitle: UILabel!
+    @IBOutlet weak var productDescription: UILabel!
+    @IBOutlet weak var productPrice: UILabel!
+    @IBOutlet weak var productQuantity: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         productTitle.text = teste
