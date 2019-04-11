@@ -11,7 +11,7 @@ import Firebase
 import SwiftyJSON
 
 class ViewController: UIViewController {
-
+    var ref: DatabaseReference!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ref = Database.database().reference()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -51,11 +51,18 @@ class ViewController: UIViewController {
         Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (result, error) in
             
             guard let user = result?.user
-                else {
-                    print(error)
-                    return
+            else {
+                print(error)
+                return
             }
+            
+            let userData = ["email": self.email.text! as String]
+            
+            self.ref.child("users").child(user.uid).setValue(userData)
+            
+            Alert.display(self, "Sucesso", "Usuário cadastrado com sucesso", "Realizar Login")
         }
+        
         registerButton.isEnabled = true
     }
     

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Firebase
+import SwiftyJSON
 
 class BatchesViewController: UICollectionViewController {
-    
+    var ref = DatabaseReference()
     @IBOutlet weak var text: UILabel!
     var dataArray = [String]()
     var arrayOfImages = [UIImage]()
@@ -17,8 +19,17 @@ class BatchesViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
+        dataArray = []
+        ref.child("batches").observeSingleEvent(of: .value, with: { (snapshot) in
+            for batch in snapshot.value as! NSArray{
+                let batch = JSON(batch)
+                let batchTitle = batch["title"].stringValue
 
-        dataArray = ["Produto 1", "Produto 2", "Produto 3", "Produto 4", "Produto 5", "Produto 6", "Produto 7"]
+                self.dataArray.append(batchTitle)
+            }
+            self.collectionView!.reloadData()
+        })
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
