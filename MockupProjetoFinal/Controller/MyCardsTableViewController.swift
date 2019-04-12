@@ -7,13 +7,40 @@
 //
 
 import UIKit
+import Firebase
+import SwiftyJSON
 
 class MyCardsTableViewController: UITableViewController {
-    var myCards = ["Mastercard com final 4325", "Visa com final 9684", "Sodexo com final 1054"]
+    var userCards = [Card]()
+    var ref = DatabaseReference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ref = Database.database().reference()
+
+        let userId = UserDefaults.standard.string(forKey: "currentUserId")
+        
+        ref.child(userId!).child("creditCards").observeSingleEvent(of: .value, with: { (snapshot) in
+            print(userId!)
+            print(snapshot)
+            
+            for card in snapshot.value as! NSArray{
+                let card = JSON(card)
+                let cardNumber = card["number"].stringValue
+                let ownerName = card["ownerName"].stringValue
+                let strDate = card["expirationDate"].stringValue
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+                let expirationDate = dateFormatter.date(from: strDate)
+                
+                let userCard = Card(cardNumber, ownerName, expirationDate!)
+                self.userCards.append(userCard)
+            }
+            self.tableView.reloadData()
+        })
+        
         let buttonAdd = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(self.addCredtiCard))
         
         self.navigationItem.rightBarButtonItems = [buttonAdd]
@@ -32,14 +59,14 @@ class MyCardsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myCards.count
+        return userCards.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cardRow", for: indexPath)
 
-        cell.textLabel?.text = myCards[indexPath.row]
+        cell.textLabel?.text = userCards[indexPath.row].number
 
         return cell
     }

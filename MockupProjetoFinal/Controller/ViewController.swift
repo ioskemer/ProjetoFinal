@@ -55,8 +55,8 @@ class ViewController: UIViewController {
                 print(error)
                 return
             }
-            
-            let userData = ["email": self.email.text! as String]
+            let userEmail = user.email!
+            let userData = ["email": userEmail]
             
             self.ref.child("users").child(user.uid).setValue(userData)
             

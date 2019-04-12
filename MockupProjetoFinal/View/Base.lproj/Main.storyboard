@@ -284,7 +284,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="LU2-ca-q3q">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="LU2-ca-q3q">
                                 <rect key="frame" x="0.0" y="84" width="375" height="535"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Número Cartão" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACd-1p-AFK">
@@ -350,10 +350,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HOL-uV-YDA" firstAttribute="trailing" secondItem="LU2-ca-q3q" secondAttribute="trailing" id="JDk-8V-aZh"/>
+                            <constraint firstItem="LU2-ca-q3q" firstAttribute="top" secondItem="HOL-uV-YDA" secondAttribute="top" constant="20" id="UMq-j6-3CD"/>
                             <constraint firstItem="LU2-ca-q3q" firstAttribute="leading" secondItem="ToA-aM-cB1" secondAttribute="leading" id="c3o-mm-hSh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HOL-uV-YDA"/>
                     </view>
+                    <connections>
+                        <outlet property="cardCVC" destination="ftl-iF-qeG" id="2xP-lF-b5L"/>
+                        <outlet property="cardExpirationDate" destination="yYg-TO-fK3" id="ixs-TB-qlV"/>
+                        <outlet property="cardNumber" destination="Ag6-lc-Whq" id="L2C-Gl-cwG"/>
+                        <outlet property="cardOwnerName" destination="pqm-hV-HKI" id="Q2i-LC-csU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gd-eh-Kl4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

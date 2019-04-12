@@ -11,6 +11,11 @@ import UIKit
 class CreditCardViewController: UIViewController {
     var isNew = "true"
     
+    @IBOutlet weak var cardNumber: UITextField!
+    @IBOutlet weak var cardOwnerName: UITextField!
+    @IBOutlet weak var cardExpirationDate: UIDatePicker!
+    @IBOutlet weak var cardCVC: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Novo"
@@ -29,6 +34,12 @@ class CreditCardViewController: UIViewController {
     }
     
     @objc func saveCredtiCard(){
+        let number = cardNumber.text
+        let ownerName = cardOwnerName.text
+        let expirationDate = cardExpirationDate.date
+        let cvc = cardCVC
+        
+        let newCard = Card(number!, ownerName!, expirationDate)
         
     }
     
