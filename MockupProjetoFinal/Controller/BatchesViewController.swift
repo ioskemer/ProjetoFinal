@@ -14,6 +14,7 @@ class BatchesViewController: UICollectionViewController {
     var ref = DatabaseReference()
     @IBOutlet weak var text: UILabel!
     var dataArray = [String]()
+    var batchArray = [Batch]()
     var arrayOfImages = [UIImage]()
     var arrayOfIDs = [String]()
     
@@ -25,7 +26,17 @@ class BatchesViewController: UICollectionViewController {
             for batch in snapshot.value as! NSArray{
                 let batch = JSON(batch)
                 let batchTitle = batch["title"].stringValue
-
+                let batchDescription = batch["description"].stringValue
+                let batchPrice = batch["price"].stringValue
+                let batchQuantity = batch["quantity"].stringValue
+                
+                var newBatch = Batch()
+                newBatch.title = batchTitle
+                newBatch.description = batchDescription
+                newBatch.quantity = Int(batchQuantity) ?? 0
+                newBatch.price = Float(batchPrice) ?? 0.0
+                
+                self.batchArray.append(newBatch)
                 self.dataArray.append(batchTitle)
             }
             self.collectionView!.reloadData()
@@ -38,14 +49,17 @@ class BatchesViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return dataArray.count
+        return batchArray.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BatchCollectionViewCell
         
-        cell.productTitle.text = dataArray[indexPath.row]
-        cell.productDescription.text = "descricao qualquer"
+        var batch = Batch()
+        batch = batchArray[indexPath.row]
+        
+        cell.productTitle.text = batch.title
+        cell.productDescription.text = batch.description
         
         return cell
     }
@@ -54,7 +68,9 @@ class BatchesViewController: UICollectionViewController {
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let next = mainStoryboard.instantiateViewController(withIdentifier: "BatchViewController") as! BatchViewController
 
-        next.teste = dataArray[indexPath.row]
+        var batch = Batch()
+        batch = batchArray[indexPath.row]
+        next.batch = batch
         
         self.navigationController?.pushViewController(next, animated: true)
     }

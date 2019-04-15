@@ -10,15 +10,18 @@ import UIKit
 
 class BatchViewController: UIViewController {
     var teste = ""
+    var batch = Batch()
     @IBOutlet weak var productTitle: UILabel!
     @IBOutlet weak var productDescription: UILabel!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productQuantity: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        productTitle.text = teste
-        // Do any additional setup after loading the view.
+        productTitle.text = batch.title
+        productDescription.text = batch.description
+        productPrice.text = String(batch.price)
+        productQuantity.text = String(batch.quantity)
     }
     
 

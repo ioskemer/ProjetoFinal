@@ -23,6 +23,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     @IBAction func login(_ sender: Any) {
         loginButton.isEnabled = false
         Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (result, error) in
