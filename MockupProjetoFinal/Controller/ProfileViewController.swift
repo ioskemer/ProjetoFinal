@@ -36,6 +36,7 @@ class ProfileViewController: UIViewController {
     @IBAction func update(_ sender: Any) {
         let pass = password.text!
         let passConf = passwordConfirmation.text!
+        var ref = Database.database().reference()
         
         if pass != passConf {
             Alert.display(self, "Erro", "Senha e confirmação não conferem.", "Entendi")
@@ -56,6 +57,9 @@ class ProfileViewController: UIViewController {
             print(error)
             return
         })
+        
+        var userId = UserDefaults.standard.string(forKey: "currentUserId")
+        ref.child("users/\(userId!)/email").setValue(email.text!)
         
         Alert.display(self, "Sucesso!", "Usuário atualizado com sucesso", "Ok!")
     }

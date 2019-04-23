@@ -9,17 +9,20 @@
 import UIKit
 
 class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
+    var batch = Batch()
     var userCards = ["Mastercard com final 4325", "Visa com final 1984", "Elo com final 2958", "Sodexo com final 2157"]
     
+    @IBOutlet weak var selectedQuantity: UILabel!
     @IBOutlet weak var batchQuantity: UISlider!
     @IBOutlet weak var userCard: UIPickerView!
     @IBOutlet weak var userPassword: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let availableUnits = batch.quantity
+        batchQuantity.maximumValue = Float(availableUnits)
+        batchQuantity.minimumValue = 1
+        selectedQuantity.text = "1"
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,6 +43,9 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return userCards[row]
     }
     
+    @IBAction func sliderValueChanged(_ sender: Any) {
+        selectedQuantity.text = String(Int(batchQuantity.value))
+    }
     /*
     // MARK: - Navigation
 
@@ -49,5 +55,6 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func reserveBatch(_ sender: Any) {
+    }
 }

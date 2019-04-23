@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" alignment="center" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="gaO-y1-KqK">
-                                <rect key="frame" x="0.0" y="114" width="375" height="351"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="419"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0a-ls-YSR">
                                         <rect key="frame" x="166.5" y="0.0" width="42" height="20.5"/>
@@ -57,6 +57,13 @@
                                         <state key="normal" title="Realizar Cadastro"/>
                                         <connections>
                                             <action selector="register:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JlR-RE-H0q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxi-Hq-kpC">
+                                        <rect key="frame" x="168.5" y="389" width="38" height="30"/>
+                                        <state key="normal" title="Mapa"/>
+                                        <connections>
+                                            <segue destination="vX0-3H-Dn1" kind="show" id="xCL-hh-LUc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -135,6 +142,31 @@
             </objects>
             <point key="canvasLocation" x="150" y="672"/>
         </scene>
+        <!--Google Maps View Controller-->
+        <scene sceneID="uSC-xB-2aO">
+            <objects>
+                <viewController id="vX0-3H-Dn1" customClass="GoogleMapsViewController" customModule="MockupProjetoFinal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hhf-l9-ymB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3HQ-66-U8B" customClass="GMSMapView">
+                                <rect key="frame" x="67" y="229" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jws-3o-fBE"/>
+                    </view>
+                    <connections>
+                        <outlet property="map" destination="3HQ-66-U8B" id="ndz-gQ-bOV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VsC-dB-oJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="946" y="672"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7Zp-Yo-j6I">
             <objects>
@@ -167,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aT-np-EWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1415" y="769"/>
+            <point key="canvasLocation" x="1772" y="800"/>
         </scene>
         <!--Batch View Controller-->
         <scene sceneID="4Gr-5r-Uvn">
@@ -210,7 +242,7 @@
                                 <rect key="frame" x="20" y="538" width="335" height="30"/>
                                 <state key="normal" title="Comprar"/>
                                 <connections>
-                                    <segue destination="0ld-F7-Eso" kind="show" id="NHa-PK-2La"/>
+                                    <action selector="goToBuySection:" destination="L2g-2e-isq" eventType="touchUpInside" id="GFk-eI-tyS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -230,6 +262,7 @@
                         <outlet property="productPrice" destination="wQN-fJ-Yyw" id="3uX-fq-lMz"/>
                         <outlet property="productQuantity" destination="jA2-7S-MTh" id="DJr-1H-kIA"/>
                         <outlet property="productTitle" destination="wXe-2m-pSP" id="CYb-Ir-2GY"/>
+                        <segue destination="0ld-F7-Eso" kind="show" identifier="buy" id="XFO-sa-dYI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVU-Qd-JXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -246,6 +279,9 @@
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IM7-bc-KAw">
                                 <rect key="frame" x="18" y="165" width="339" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="0ld-F7-Eso" eventType="valueChanged" id="rlH-Bn-lBJ"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantidade desejada" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceJ-iU-zcd">
                                 <rect key="frame" x="0.0" y="94" width="375" height="21"/>
@@ -268,6 +304,9 @@
                                 <rect key="frame" x="239" y="580" width="61" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Reservar"/>
+                                <connections>
+                                    <action selector="reserveBatch:" destination="0ld-F7-Eso" eventType="touchUpInside" id="jd5-c7-nto"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3Y-BT-nuV">
                                 <rect key="frame" x="91" y="580" width="41" height="30"/>
@@ -286,6 +325,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22Y-cT-bkc">
+                                <rect key="frame" x="166" y="123" width="42" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -304,13 +350,14 @@
                     </view>
                     <connections>
                         <outlet property="batchQuantity" destination="IM7-bc-KAw" id="c1z-Wh-pST"/>
+                        <outlet property="selectedQuantity" destination="22Y-cT-bkc" id="snN-PU-evo"/>
                         <outlet property="userCard" destination="SmW-yO-OQb" id="WH6-Yv-DHu"/>
                         <outlet property="userPassword" destination="cBP-uB-mUG" id="isq-ic-429"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fm7-np-F5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5578" y="-109"/>
+            <point key="canvasLocation" x="5576.8000000000002" y="-109.29535232383809"/>
         </scene>
         <!--Meus Cartões-->
         <scene sceneID="YD4-71-MIr">
