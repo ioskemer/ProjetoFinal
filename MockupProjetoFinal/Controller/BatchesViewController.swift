@@ -20,27 +20,10 @@ class BatchesViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
-        dataArray = []
-        ref.child("batches").observeSingleEvent(of: .value, with: { (snapshot) in
-            for batch in snapshot.value as! NSArray{
-                let batch = JSON(batch)
-                let batchTitle = batch["title"].stringValue
-                let batchDescription = batch["description"].stringValue
-                let batchPrice = batch["price"].stringValue
-                let batchQuantity = batch["quantity"].stringValue
-                
-                var newBatch = Batch()
-                newBatch.title = batchTitle
-                newBatch.description = batchDescription
-                newBatch.quantity = Int(batchQuantity) ?? 0
-                newBatch.price = Float(batchPrice) ?? 0.0
-                
-                self.batchArray.append(newBatch)
-                self.dataArray.append(batchTitle)
-            }
-            self.collectionView!.reloadData()
-        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateData()
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -92,5 +75,32 @@ class BatchesViewController: UICollectionViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    func updateData(){
+        ref = Database.database().reference()
+        self.batchArray = []
+        ref.child("batches").observeSingleEvent(of: .value, with: { (snapshot) in
+            for batch in snapshot.value as! NSArray{
+                let batch = JSON(batch)
+                let batchId = batch["id"].stringValue
+                let batchTitle = batch["title"].stringValue
+                let batchDescription = batch["description"].stringValue
+                let batchPrice = batch["price"].stringValue
+                let batchQuantity = batch["quantity"].stringValue
+                let batchAvailableQuantity = batch["availableQuantity"].stringValue
+                
+                let newBatch = Batch()
+                newBatch.id = Int(batchId) ?? 0
+                newBatch.title = batchTitle
+                newBatch.description = batchDescription
+                newBatch.quantity = Int(batchQuantity) ?? 0
+                newBatch.availableQuantity = Int(batchAvailableQuantity) ?? 0
+                newBatch.price = Float(batchPrice) ?? 0.0
+                
+                self.batchArray.append(newBatch)
+            }
+            self.collectionView!.reloadData()
+        })
     }
 }

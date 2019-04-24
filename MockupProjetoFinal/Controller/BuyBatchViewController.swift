@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var batch = Batch()
     var userCards = ["Mastercard com final 4325", "Visa com final 1984", "Elo com final 2958", "Sodexo com final 2157"]
+    var ref = Database.database().reference()
     
     @IBOutlet weak var selectedQuantity: UILabel!
     @IBOutlet weak var batchQuantity: UISlider!
@@ -19,7 +21,7 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let availableUnits = batch.quantity
+        let availableUnits = batch.availableQuantity
         batchQuantity.maximumValue = Float(availableUnits)
         batchQuantity.minimumValue = 1
         selectedQuantity.text = "1"
@@ -56,5 +58,24 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     */
     @IBAction func reserveBatch(_ sender: Any) {
+        let desiredQuantity = Int(batchQuantity.value)
+        let userID = UserDefaults.standard.string(forKey: "currentUserId")
+        let availableQuantity =
+        //ref.child("batches").child(batch.id)
+        
+        
+        
+        ref.child("batches").child(String(batch.id)).child("reserved").observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+ 
+            var locationRef = self.ref.child("batches").child(String(self.batch.id)).child("reserved").childByAutoId()
+            locationRef.setValue(["uid": userID, "quantity": desiredQuantity])
+        })
+        
+        batch.updateAvailableQuantity(Database.database(), desiredQuantity)
+        
+        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
