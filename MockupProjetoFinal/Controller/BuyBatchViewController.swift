@@ -72,6 +72,9 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             locationRef.setValue(["uid": userID, "quantity": desiredQuantity])
         })
         
+        var locationRef = self.ref.child("users").child(userID!).child("batches").childByAutoId()
+        locationRef.setValue(["batchId": batch.id, "quantity": desiredQuantity])
+        
         batch.updateAvailableQuantity(Database.database(), desiredQuantity)
         
         navigationController?.popViewController(animated: true)

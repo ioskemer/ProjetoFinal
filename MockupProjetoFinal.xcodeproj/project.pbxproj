@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1305C20C2271287C00D84898 /* MyBatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305C20B2271287C00D84898 /* MyBatchesViewController.swift */; };
 		13567C072261420000D09FC6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13567C062261420000D09FC6 /* Card.swift */; };
 		1359744222580B97005318AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1359744122580B97005318AB /* GoogleService-Info.plist */; };
 		1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359744322581FB4005318AB /* MyOrdersViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1305C20B2271287C00D84898 /* MyBatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBatchesViewController.swift; sourceTree = "<group>"; };
 		13567C062261420000D09FC6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		1359744122580B97005318AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1359744322581FB4005318AB /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				13852A21225EAC000058BDA7 /* MyCardsTableViewController.swift */,
 				13852A31225EB2E90058BDA7 /* CreditCardViewController.swift */,
 				13631778226535CA008BBB85 /* BuyBatchViewController.swift */,
+				1305C20B2271287C00D84898 /* MyBatchesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 			files = (
 				13631779226535CA008BBB85 /* BuyBatchViewController.swift in Sources */,
 				13852A04225E9F8D0058BDA7 /* Alert.swift in Sources */,
+				1305C20C2271287C00D84898 /* MyBatchesViewController.swift in Sources */,
 				1363177B22653B9B008BBB85 /* Batch.swift in Sources */,
 				13E1E6E92255846E00E0F348 /* BatchViewController.swift in Sources */,
 				1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */,
