@@ -16,6 +16,7 @@ class Batch {
     var quantity: Int
     var availableQuantity: Int
     var price: Float
+    var image: UIImage
     
     init(){
         self.id = 0
@@ -24,6 +25,7 @@ class Batch {
         self.availableQuantity = 0
         self.quantity = 0
         self.price = 0.0
+        self.image = UIImage()
     }
     
     func updateAvailableQuantity(_ db: Database, _ qtd: Int){

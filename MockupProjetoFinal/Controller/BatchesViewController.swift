@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class BatchesViewController: UICollectionViewController {
     var ref = DatabaseReference()
+    let storage = Storage.storage()
     @IBOutlet weak var text: UILabel!
     var dataArray = [String]()
     var batchArray = [Batch]()
@@ -43,6 +44,9 @@ class BatchesViewController: UICollectionViewController {
         
         cell.productTitle.text = batch.title
         cell.productDescription.text = batch.description
+        cell.productPrice.text = String(batch.price)
+        cell.productAvailableQuantity.text = "\(batch.availableQuantity) unidades."
+        cell.productImage.image = batch.image
         
         return cell
     }
@@ -97,6 +101,23 @@ class BatchesViewController: UICollectionViewController {
                 newBatch.quantity = Int(batchQuantity) ?? 0
                 newBatch.availableQuantity = Int(batchAvailableQuantity) ?? 0
                 newBatch.price = Float(batchPrice) ?? 0.0
+                print("ID DO LOTE EH: \(newBatch.id)")
+                let pathReference = self.storage.reference(withPath: "images/\(newBatch.id).png")
+                let storageRef = self.storage.reference()
+                let imageRef = storageRef.child("images/\(newBatch.id).png")
+                
+                // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+                imageRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
+                    if let error = error {
+                        // Uh-oh, an error occurred!
+                        print("erro ao baixar iamgem")
+                    } else {
+                        // Data for "images/island.jpg" is returned
+                        print(data)
+                        newBatch.image = UIImage(data: data!)!
+                        self.collectionView!.reloadData()
+                    }
+                }
                 
                 self.batchArray.append(newBatch)
             }
