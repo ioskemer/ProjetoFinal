@@ -23,7 +23,6 @@ class MyBatchesViewController: UICollectionViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        updateData()
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -70,6 +69,7 @@ class MyBatchesViewController: UICollectionViewController {
      */
     
     override func viewWillAppear(_ animated: Bool) {
+        updateData()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -99,6 +99,7 @@ class MyBatchesViewController: UICollectionViewController {
     }
     
     func addToTable(){
+        batchArray = []
         for batchId in dataArray {
             ref.child("batches").child(batchId).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
@@ -107,12 +108,14 @@ class MyBatchesViewController: UICollectionViewController {
                 let batchDescription = value?["description"] as? String ?? ""
                 
                 let newBatch = Batch()
+                newBatch.id = Int(batchId)!
                 newBatch.title = batchTitle
                 newBatch.description = batchDescription
                 
                 self.batchArray.append(newBatch)
+                
+                self.collectionView!.reloadData()
             })
         }
-        self.collectionView!.reloadData()
     }
 }
