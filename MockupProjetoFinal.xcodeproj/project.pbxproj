@@ -17,6 +17,7 @@
 		1363177B22653B9B008BBB85 /* Batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363177A22653B9B008BBB85 /* Batch.swift */; };
 		1363177E226541E3008BBB85 /* DeliveriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363177D226541E3008BBB85 /* DeliveriesTableViewController.swift */; };
 		13631782226550B0008BBB85 /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13631781226550B0008BBB85 /* GoogleMapsViewController.swift */; };
+		13786CBB2273CB2F008F0A17 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13786CBA2273CB2F008F0A17 /* RegistrationViewController.swift */; };
 		13852A04225E9F8D0058BDA7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A03225E9F8D0058BDA7 /* Alert.swift */; };
 		13852A0C225EA4330058BDA7 /* MockupProjetoFinalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A0B225EA4330058BDA7 /* MockupProjetoFinalTests.swift */; };
 		13852A22225EAC000058BDA7 /* MyCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A21225EAC000058BDA7 /* MyCardsTableViewController.swift */; };
@@ -53,6 +54,7 @@
 		1363177A22653B9B008BBB85 /* Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Batch.swift; sourceTree = "<group>"; };
 		1363177D226541E3008BBB85 /* DeliveriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveriesTableViewController.swift; sourceTree = "<group>"; };
 		13631781226550B0008BBB85 /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
+		13786CBA2273CB2F008F0A17 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		13852A03225E9F8D0058BDA7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		13852A09225EA4330058BDA7 /* MockupProjetoFinalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockupProjetoFinalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13852A0B225EA4330058BDA7 /* MockupProjetoFinalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupProjetoFinalTests.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				13852A31225EB2E90058BDA7 /* CreditCardViewController.swift */,
 				13631778226535CA008BBB85 /* BuyBatchViewController.swift */,
 				1305C20B2271287C00D84898 /* MyBatchesViewController.swift */,
+				13786CBA2273CB2F008F0A17 /* RegistrationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				13852A22225EAC000058BDA7 /* MyCardsTableViewController.swift in Sources */,
 				13E1E6DF225570F500E0F348 /* BatchesViewController.swift in Sources */,
 				1363177E226541E3008BBB85 /* DeliveriesTableViewController.swift in Sources */,
+				13786CBB2273CB2F008F0A17 /* RegistrationViewController.swift in Sources */,
 				13567C072261420000D09FC6 /* Card.swift in Sources */,
 				13E1E6C72255635500E0F348 /* ViewController.swift in Sources */,
 				13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */,

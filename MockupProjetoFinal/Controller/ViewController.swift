@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var logoImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,21 @@ class ViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        email.layer.borderWidth = 3
+        email.layer.borderColor = UIColor.white.cgColor
+        email.backgroundColor = UIColor.black
+        email.attributedPlaceholder = NSAttributedString(string: "E-mail",
+                                                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        email.layer.cornerRadius = 7.0
+        email.layer.borderWidth = 2.0
+        
+        password.layer.cornerRadius = 7.0
+        password.layer.borderWidth = 2.0
+        password.layer.borderColor = UIColor.white.cgColor
+        password.backgroundColor = UIColor.black
+        password.attributedPlaceholder = NSAttributedString(string: "Password",
+                                                         attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        loginButton.layer.cornerRadius = 5
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -55,23 +71,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: Any) {
-        registerButton.isEnabled = false
-        Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (result, error) in
-            
-            guard let user = result?.user
-            else {
-                print(error)
-                return
-            }
-            let userEmail = user.email!
-            let userData = ["email": userEmail]
-            
-            self.ref.child("users").child(user.uid).setValue(userData)
-            
-            Alert.display(self, "Sucesso", "Usuário cadastrado com sucesso", "Realizar Login")
-        }
-        
-        registerButton.isEnabled = true
+
     }
     
     func goToRootPage(){
