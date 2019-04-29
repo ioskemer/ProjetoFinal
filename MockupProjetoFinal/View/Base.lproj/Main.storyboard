@@ -402,6 +402,10 @@
                                     <action selector="goToBuySection:" destination="L2g-2e-isq" eventType="touchUpInside" id="GFk-eI-tyS"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7uN-AP-Kb0">
+                                <rect key="frame" x="67" y="307" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -418,6 +422,7 @@
                         <outlet property="buyButton" destination="5rV-VK-wxV" id="uy7-j0-YGk"/>
                         <outlet property="productAvailableQuantity" destination="dGd-PU-12C" id="st5-0I-RLG"/>
                         <outlet property="productDescription" destination="W0x-Pw-a7X" id="GHc-2q-efz"/>
+                        <outlet property="productImage" destination="7uN-AP-Kb0" id="QET-rU-y3U"/>
                         <outlet property="productPrice" destination="wQN-fJ-Yyw" id="3uX-fq-lMz"/>
                         <outlet property="productQuantity" destination="jA2-7S-MTh" id="DJr-1H-kIA"/>
                         <outlet property="productTitle" destination="wXe-2m-pSP" id="CYb-Ir-2GY"/>
@@ -857,7 +862,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sq0-wY-ff9">
                                             <rect key="frame" x="20" y="20" width="96" height="96"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RI7-5G-TR1">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RI7-5G-TR1">
                                                     <rect key="frame" x="0.0" y="0.0" width="96" height="108"/>
                                                 </imageView>
                                             </subviews>

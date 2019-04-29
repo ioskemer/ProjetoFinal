@@ -17,6 +17,7 @@ class BatchViewController: UIViewController {
     @IBOutlet weak var productQuantity: UILabel!
     @IBOutlet weak var productAvailableQuantity: UILabel!
     @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var productImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class BatchViewController: UIViewController {
         productPrice.text = String(batch.price)
         productQuantity.text = String(batch.quantity)
         productAvailableQuantity.text = String(batch.availableQuantity)
+        productImage = UIImageView(image: batch.image)
         if batch.availableQuantity == 0 {
             buyButton.isHidden = true
         }

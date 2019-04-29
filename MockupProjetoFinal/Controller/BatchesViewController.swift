@@ -18,9 +18,18 @@ class BatchesViewController: UICollectionViewController {
     var batchArray = [Batch]()
     var arrayOfImages = [UIImage]()
     var arrayOfIDs = [String]()
+    var imagesArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //_ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(BatchesViewController.refreshImages), userInfo: nil, repeats: true)
+
+    }
+    
+    @objc func refreshImages(){
+        print("reloading")
+        collectionView!.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,12 +50,12 @@ class BatchesViewController: UICollectionViewController {
         
         var batch = Batch()
         batch = batchArray[indexPath.row]
-        
+        print(batch.image)
         cell.productTitle.text = batch.title
         cell.productDescription.text = batch.description
         cell.productPrice.text = String(batch.price)
         cell.productAvailableQuantity.text = "\(batch.availableQuantity) unidades."
-        cell.productImage.image = batch.image
+        //cell.productImage.image = UIImageView(image: 
         
         return cell
     }
@@ -101,7 +110,6 @@ class BatchesViewController: UICollectionViewController {
                 newBatch.quantity = Int(batchQuantity) ?? 0
                 newBatch.availableQuantity = Int(batchAvailableQuantity) ?? 0
                 newBatch.price = Float(batchPrice) ?? 0.0
-                print("ID DO LOTE EH: \(newBatch.id)")
                 let pathReference = self.storage.reference(withPath: "images/\(newBatch.id).png")
                 let storageRef = self.storage.reference()
                 let imageRef = storageRef.child("images/\(newBatch.id).png")
@@ -115,11 +123,12 @@ class BatchesViewController: UICollectionViewController {
                         // Data for "images/island.jpg" is returned
                         print(data)
                         newBatch.image = UIImage(data: data!)!
-                        self.collectionView!.reloadData()
+                        self.imagesArray.append(UIImage(data: data!)!)
+                    self.collectionView.reloadData()
                     }
                 }
-                
                 self.batchArray.append(newBatch)
+                self.collectionView.reloadData()
             }
             self.collectionView!.reloadData()
         })
