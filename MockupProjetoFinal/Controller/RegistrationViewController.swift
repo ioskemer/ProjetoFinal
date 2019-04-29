@@ -24,6 +24,50 @@ class RegistrationViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        email.layer.borderWidth = 3
+        email.layer.borderColor = UIColor.white.cgColor
+        email.backgroundColor = UIColor.black
+        email.attributedPlaceholder = NSAttributedString(string: "E-mail",
+                                                         attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        email.layer.cornerRadius = 7.0
+        email.layer.borderWidth = 2.0
+        
+        username.layer.borderWidth = 3
+        username.layer.borderColor = UIColor.white.cgColor
+        username.backgroundColor = UIColor.black
+        username.attributedPlaceholder = NSAttributedString(string: "Nome Completo",
+                                                            attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        username.layer.cornerRadius = 7.0
+        username.layer.borderWidth = 2.0
+        
+        password.layer.borderWidth = 3
+        password.layer.borderColor = UIColor.white.cgColor
+        password.backgroundColor = UIColor.black
+        password.attributedPlaceholder = NSAttributedString(string: "Senha",
+                                                            attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        password.layer.cornerRadius = 7.0
+        password.layer.borderWidth = 2.0
+        
+        passwordConfirmation.layer.borderWidth = 3
+        passwordConfirmation.layer.borderColor = UIColor.white.cgColor
+        passwordConfirmation.backgroundColor = UIColor.black
+        passwordConfirmation.attributedPlaceholder = NSAttributedString(string: "Confirmação Senha",
+                                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        passwordConfirmation.layer.cornerRadius = 7.0
+        passwordConfirmation.layer.borderWidth = 2.0
+        
+        cpf.layer.borderWidth = 3
+        cpf.layer.borderColor = UIColor.white.cgColor
+        cpf.backgroundColor = UIColor.black
+        cpf.attributedPlaceholder = NSAttributedString(string: "CPF",
+                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        cpf.layer.cornerRadius = 7.0
+        cpf.layer.borderWidth = 2.0
+        
+        registerButton.layer.cornerRadius = 5
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -57,5 +101,9 @@ class RegistrationViewController: UIViewController {
         }
         
         registerButton.isEnabled = true
+    }
+    
+    func addStyleProps(){
+
     }
 }

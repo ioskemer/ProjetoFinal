@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1305C20C2271287C00D84898 /* MyBatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305C20B2271287C00D84898 /* MyBatchesViewController.swift */; };
+		132584442277B2770055A051 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584432277B2770055A051 /* icon.png */; };
+		132584462277B57E0055A051 /* shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584452277B57E0055A051 /* shopping-cart.png */; };
+		132584482277B5F70055A051 /* storage.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584472277B5F60055A051 /* storage.png */; };
+		1325844A2277B7070055A051 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584492277B7070055A051 /* settings.png */; };
 		13567C072261420000D09FC6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13567C062261420000D09FC6 /* Card.swift */; };
 		1359744222580B97005318AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1359744122580B97005318AB /* GoogleService-Info.plist */; };
 		1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359744322581FB4005318AB /* MyOrdersViewController.swift */; };
@@ -45,6 +49,10 @@
 
 /* Begin PBXFileReference section */
 		1305C20B2271287C00D84898 /* MyBatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBatchesViewController.swift; sourceTree = "<group>"; };
+		132584432277B2770055A051 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		132584452277B57E0055A051 /* shopping-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping-cart.png"; sourceTree = "<group>"; };
+		132584472277B5F60055A051 /* storage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storage.png; sourceTree = "<group>"; };
+		132584492277B7070055A051 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		13567C062261420000D09FC6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		1359744122580B97005318AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1359744322581FB4005318AB /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +119,10 @@
 			children = (
 				13E1E6C82255635500E0F348 /* Main.storyboard */,
 				13E1E6CB2255635600E0F348 /* Assets.xcassets */,
+				132584432277B2770055A051 /* icon.png */,
+				132584452277B57E0055A051 /* shopping-cart.png */,
+				132584492277B7070055A051 /* settings.png */,
+				132584472277B5F60055A051 /* storage.png */,
 				13E1E6CD2255635600E0F348 /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -294,10 +306,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1325844A2277B7070055A051 /* settings.png in Resources */,
 				13E1E6CF2255635600E0F348 /* LaunchScreen.storyboard in Resources */,
+				132584482277B5F70055A051 /* storage.png in Resources */,
+				132584442277B2770055A051 /* icon.png in Resources */,
 				1359744222580B97005318AB /* GoogleService-Info.plist in Resources */,
 				13E1E6CC2255635600E0F348 /* Assets.xcassets in Resources */,
 				13E1E6CA2255635500E0F348 /* Main.storyboard in Resources */,
+				132584462277B57E0055A051 /* shopping-cart.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
