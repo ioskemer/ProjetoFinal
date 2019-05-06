@@ -26,6 +26,8 @@
 		13852A0C225EA4330058BDA7 /* MockupProjetoFinalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A0B225EA4330058BDA7 /* MockupProjetoFinalTests.swift */; };
 		13852A22225EAC000058BDA7 /* MyCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A21225EAC000058BDA7 /* MyCardsTableViewController.swift */; };
 		13852A32225EB2E90058BDA7 /* CreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A31225EB2E90058BDA7 /* CreditCardViewController.swift */; };
+		13E0EAE72280EF59007B49C2 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E0EAE62280EF59007B49C2 /* Validator.swift */; };
+		13E0EAEA2280F035007B49C2 /* String+CPFValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E0EAE92280F035007B49C2 /* String+CPFValidation.swift */; };
 		13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6C42255635500E0F348 /* AppDelegate.swift */; };
 		13E1E6C72255635500E0F348 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6C62255635500E0F348 /* ViewController.swift */; };
 		13E1E6CA2255635500E0F348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E1E6C82255635500E0F348 /* Main.storyboard */; };
@@ -69,6 +71,8 @@
 		13852A0D225EA4330058BDA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13852A21225EAC000058BDA7 /* MyCardsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardsTableViewController.swift; sourceTree = "<group>"; };
 		13852A31225EB2E90058BDA7 /* CreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewController.swift; sourceTree = "<group>"; };
+		13E0EAE62280EF59007B49C2 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		13E0EAE92280F035007B49C2 /* String+CPFValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CPFValidation.swift"; sourceTree = "<group>"; };
 		13E1E6C12255635500E0F348 /* MockupProjetoFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockupProjetoFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E1E6C42255635500E0F348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E1E6C62255635500E0F348 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				13852A03225E9F8D0058BDA7 /* Alert.swift */,
 				13567C062261420000D09FC6 /* Card.swift */,
 				1363177A22653B9B008BBB85 /* Batch.swift */,
+				13E0EAE62280EF59007B49C2 /* Validator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +171,14 @@
 			path = MockupProjetoFinalTests;
 			sourceTree = "<group>";
 		};
+		13E0EAE82280F021007B49C2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13E0EAE92280F035007B49C2 /* String+CPFValidation.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		13E1E6B82255635500E0F348 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +207,7 @@
 				1359744722582132005318AB /* Controller */,
 				135974462258212E005318AB /* View */,
 				1359744522582129005318AB /* Model */,
+				13E0EAE82280F021007B49C2 /* Extensions */,
 			);
 			path = MockupProjetoFinal;
 			sourceTree = "<group>";
@@ -332,6 +346,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMaskText/SwiftMaskText.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -343,6 +358,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMaskText.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -423,8 +439,10 @@
 				13852A22225EAC000058BDA7 /* MyCardsTableViewController.swift in Sources */,
 				13E1E6DF225570F500E0F348 /* BatchesViewController.swift in Sources */,
 				1363177E226541E3008BBB85 /* DeliveriesTableViewController.swift in Sources */,
+				13E0EAE72280EF59007B49C2 /* Validator.swift in Sources */,
 				13786CBB2273CB2F008F0A17 /* RegistrationViewController.swift in Sources */,
 				13567C072261420000D09FC6 /* Card.swift in Sources */,
+				13E0EAEA2280F035007B49C2 /* String+CPFValidation.swift in Sources */,
 				13E1E6C72255635500E0F348 /* ViewController.swift in Sources */,
 				13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */,
 				1359744B2258277E005318AB /* ProfileViewController.swift in Sources */,

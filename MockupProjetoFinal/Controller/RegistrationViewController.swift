@@ -17,9 +17,26 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var cpf: UITextField!
     @IBOutlet weak var passwordConfirmation: UITextField!
+    @IBOutlet weak var address: UITextField!
+    @IBOutlet weak var cep: UITextField!
+    @IBOutlet weak var city: UITextField!
+    @IBOutlet weak var state: UITextField!
+    @IBOutlet weak var additional: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let cpf = "09287589909"
+        
+        print(cpf.isCPF)
+        
+        let otherCpf = "065.533.309-64"
+        
+        print(otherCpf.isCPF)
+        
+        let moreOneCpf = "1234556786"
+        
+        print(moreOneCpf.isCPF)
 
         // Do any additional setup after loading the view.
     }
@@ -64,6 +81,61 @@ class RegistrationViewController: UIViewController {
                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         cpf.layer.cornerRadius = 7.0
         cpf.layer.borderWidth = 2.0
+        
+        cep.layer.borderWidth = 3
+        cep.layer.borderColor = UIColor.white.cgColor
+        cep.backgroundColor = UIColor.black
+        cep.attributedPlaceholder = NSAttributedString(string: "CEP",
+                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        city.layer.cornerRadius = 7.0
+        city.layer.borderWidth = 2.0
+
+        city.layer.cornerRadius = 7.0
+        city.layer.borderWidth = 2.0
+        
+        city.layer.borderWidth = 3
+        city.layer.borderColor = UIColor.white.cgColor
+        city.backgroundColor = UIColor.black
+        city.attributedPlaceholder = NSAttributedString(string: "Cidade",
+                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        city.layer.cornerRadius = 7.0
+        city.layer.borderWidth = 2.0
+        
+        address.layer.cornerRadius = 7.0
+        address.layer.borderWidth = 2.0
+        
+        address.layer.cornerRadius = 7.0
+        address.layer.borderWidth = 2.0
+        
+        address.layer.borderWidth = 3
+        address.layer.borderColor = UIColor.white.cgColor
+        address.backgroundColor = UIColor.black
+        address.attributedPlaceholder = NSAttributedString(string: "Endereço",
+                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        address.layer.cornerRadius = 7.0
+        address.layer.borderWidth = 2.0
+        
+        state.layer.cornerRadius = 7.0
+        state.layer.borderWidth = 2.0
+        
+        state.layer.cornerRadius = 7.0
+        state.layer.borderWidth = 2.0
+        
+        state.layer.borderWidth = 3
+        state.layer.borderColor = UIColor.white.cgColor
+        state.backgroundColor = UIColor.black
+        state.attributedPlaceholder = NSAttributedString(string: "Endereço",
+                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        state.layer.cornerRadius = 7.0
+        state.layer.borderWidth = 2.0
+        
+        additional.layer.borderWidth = 3
+        additional.layer.borderColor = UIColor.white.cgColor
+        additional.backgroundColor = UIColor.black
+        additional.attributedPlaceholder = NSAttributedString(string: "Endereço",
+                                                         attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        additional.layer.cornerRadius = 7.0
+        additional.layer.borderWidth = 2.0
         
         registerButton.layer.cornerRadius = 5
     }
