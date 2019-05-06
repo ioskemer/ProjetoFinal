@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     @IBAction func login(_ sender: Any) {
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             guard let user = result?.user
                 else {
                     print(error)
-                    Alert.display(self, "Erro no Login", "Tente novamente", "Ok!")
+                    Alert.display(self, "Erro no Login", "Usuário ou Senha incorretos", "Ok!")
                     return
             }
             Analytics.setUserProperty("sim", forName: "entrou")

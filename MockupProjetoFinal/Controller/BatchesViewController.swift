@@ -93,6 +93,7 @@ class BatchesViewController: UICollectionViewController {
     func updateData(){
         ref = Database.database().reference()
         self.batchArray = []
+        var count = 0
         ref.child("batches").observeSingleEvent(of: .value, with: { (snapshot) in
             for batch in snapshot.value! as! NSArray{
                 let batch = JSON(batch)
@@ -127,8 +128,11 @@ class BatchesViewController: UICollectionViewController {
                     self.collectionView.reloadData()
                     }
                 }
-                self.batchArray.append(newBatch)
-                self.collectionView.reloadData()
+                if (count > 0){
+                    self.batchArray.append(newBatch)
+                    self.collectionView.reloadData()
+                }
+                count+=1
             }
             self.collectionView!.reloadData()
         })

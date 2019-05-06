@@ -31,6 +31,12 @@ class MyBatchesViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        if (batchArray.count == 0) {
+            self.collectionView.setEmptyMessage("Sem pedidos, ainda :(")
+        } else {
+            self.collectionView.restore()
+        }
+        
         return batchArray.count
     }
     
@@ -85,6 +91,10 @@ class MyBatchesViewController: UICollectionViewController {
         
         ref.child("users").child(userId!).child("batches").observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
+            
+            if value == nil {
+                return
+            }
             
             for batch in JSON(value!) {
                 let jsonBatch = JSON(batch.1)

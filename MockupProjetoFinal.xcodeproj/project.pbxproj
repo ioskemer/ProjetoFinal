@@ -28,6 +28,7 @@
 		13852A32225EB2E90058BDA7 /* CreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13852A31225EB2E90058BDA7 /* CreditCardViewController.swift */; };
 		13E0EAE72280EF59007B49C2 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E0EAE62280EF59007B49C2 /* Validator.swift */; };
 		13E0EAEA2280F035007B49C2 /* String+CPFValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E0EAE92280F035007B49C2 /* String+CPFValidation.swift */; };
+		13E0EAEC2280FF62007B49C2 /* CollectionView+EmptyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E0EAEB2280FF62007B49C2 /* CollectionView+EmptyMessage.swift */; };
 		13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6C42255635500E0F348 /* AppDelegate.swift */; };
 		13E1E6C72255635500E0F348 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1E6C62255635500E0F348 /* ViewController.swift */; };
 		13E1E6CA2255635500E0F348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E1E6C82255635500E0F348 /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		13852A31225EB2E90058BDA7 /* CreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewController.swift; sourceTree = "<group>"; };
 		13E0EAE62280EF59007B49C2 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		13E0EAE92280F035007B49C2 /* String+CPFValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CPFValidation.swift"; sourceTree = "<group>"; };
+		13E0EAEB2280FF62007B49C2 /* CollectionView+EmptyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+EmptyMessage.swift"; sourceTree = "<group>"; };
 		13E1E6C12255635500E0F348 /* MockupProjetoFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockupProjetoFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E1E6C42255635500E0F348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E1E6C62255635500E0F348 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				13E0EAE92280F035007B49C2 /* String+CPFValidation.swift */,
+				13E0EAEB2280FF62007B49C2 /* CollectionView+EmptyMessage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				1305C20C2271287C00D84898 /* MyBatchesViewController.swift in Sources */,
 				1363177B22653B9B008BBB85 /* Batch.swift in Sources */,
 				13E1E6E92255846E00E0F348 /* BatchViewController.swift in Sources */,
+				13E0EAEC2280FF62007B49C2 /* CollectionView+EmptyMessage.swift in Sources */,
 				1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */,
 				13852A32225EB2E90058BDA7 /* CreditCardViewController.swift in Sources */,
 				13631782226550B0008BBB85 /* GoogleMapsViewController.swift in Sources */,

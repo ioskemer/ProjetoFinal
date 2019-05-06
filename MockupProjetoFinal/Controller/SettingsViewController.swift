@@ -38,6 +38,7 @@ class SettingsViewController: UIViewController {
     @IBAction func logout(_ sender: Any) {
         do {
             try Auth.auth().signOut()
+            self.tabBarController?.tabBar.isHidden = true
             performSegue(withIdentifier: "loginPage", sender: self)
         } catch {
             print("Erro ao sair")

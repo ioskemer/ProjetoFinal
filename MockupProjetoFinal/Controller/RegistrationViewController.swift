@@ -22,26 +22,19 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var state: UITextField!
     @IBOutlet weak var additional: UITextField!
+    let ref = Database.database().reference()
+    @IBOutlet weak var number: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let cpf = "09287589909"
-        
-        print(cpf.isCPF)
-        
-        let otherCpf = "065.533.309-64"
-        
-        print(otherCpf.isCPF)
-        
-        let moreOneCpf = "1234556786"
-        
-        print(moreOneCpf.isCPF)
+        goToLoginPage()
 
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        
         email.layer.borderWidth = 3
         email.layer.borderColor = UIColor.white.cgColor
         email.backgroundColor = UIColor.black
@@ -104,9 +97,6 @@ class RegistrationViewController: UIViewController {
         address.layer.cornerRadius = 7.0
         address.layer.borderWidth = 2.0
         
-        address.layer.cornerRadius = 7.0
-        address.layer.borderWidth = 2.0
-        
         address.layer.borderWidth = 3
         address.layer.borderColor = UIColor.white.cgColor
         address.backgroundColor = UIColor.black
@@ -115,8 +105,16 @@ class RegistrationViewController: UIViewController {
         address.layer.cornerRadius = 7.0
         address.layer.borderWidth = 2.0
         
-        state.layer.cornerRadius = 7.0
-        state.layer.borderWidth = 2.0
+        number.layer.cornerRadius = 7.0
+        number.layer.borderWidth = 2.0
+        
+        number.layer.borderWidth = 3
+        number.layer.borderColor = UIColor.white.cgColor
+        number.backgroundColor = UIColor.black
+        number.attributedPlaceholder = NSAttributedString(string: "Número",
+                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        number.layer.cornerRadius = 7.0
+        number.layer.borderWidth = 2.0
         
         state.layer.cornerRadius = 7.0
         state.layer.borderWidth = 2.0
@@ -124,7 +122,7 @@ class RegistrationViewController: UIViewController {
         state.layer.borderWidth = 3
         state.layer.borderColor = UIColor.white.cgColor
         state.backgroundColor = UIColor.black
-        state.attributedPlaceholder = NSAttributedString(string: "Endereço",
+        state.attributedPlaceholder = NSAttributedString(string: "Estado",
                                                            attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         state.layer.cornerRadius = 7.0
         state.layer.borderWidth = 2.0
@@ -132,7 +130,7 @@ class RegistrationViewController: UIViewController {
         additional.layer.borderWidth = 3
         additional.layer.borderColor = UIColor.white.cgColor
         additional.backgroundColor = UIColor.black
-        additional.attributedPlaceholder = NSAttributedString(string: "Endereço",
+        additional.attributedPlaceholder = NSAttributedString(string: "Complemento",
                                                          attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         additional.layer.cornerRadius = 7.0
         additional.layer.borderWidth = 2.0
@@ -153,29 +151,62 @@ class RegistrationViewController: UIViewController {
 
     @IBAction func register(_ sender: Any) {
         registerButton.isEnabled = false
-        if password != passwordConfirmation {
-            return
-        }
-        
-        Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (result, error) in
+        if password.text! != passwordConfirmation.text! {
+            Alert.display(self, "Erro", "Senhas não conferem", "Tentar novamente")
+        } else {
+            print("entrando na criação de usuário")
             
-            guard let user = result?.user
-                else {
-                    print(error)
-                    return
+            Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (result, error) in
+                print("criando usuário")
+                guard let user = result?.user
+                    else {
+                        Alert.display(self, "Erro", "Email já está em uso", "Tentar novamente")
+                        print(error!)
+                        return
+                }
+                
+                print("validou email")
+                
+                let userEmail = user.email!
+                let userName = self.username.text!
+                let userCpf = self.cpf.text!
+                let userCep = self.cep.text!
+                let userAddress = self.address.text!
+                let userNumber = self.number.text!
+                let userCity = self.city.text!
+                let userState = self.state.text!
+                let userAdditional = self.additional.text!
+                
+                let userData = ["email": userEmail,
+                                "name": userName,
+                                "cpf": userCpf,
+                                "cep": userCep,
+                                "address": userAddress,
+                                "number": userNumber,
+                                "city": userCity,
+                                "state": userState,
+                                "additional": userAdditional
+                               ]
+                print("salvando dados usuário")
+                
+                self.ref.child("users").child(user.uid).setValue(userData)
+                
+                print("dados usuário salvos")
+                
+                Alert.display(self, "Sucesso", "Usuário cadastrado com sucesso", "Realizar Login")
+                
+                self.goToLoginPage()
             }
-            let userEmail = user.email!
-            let userData = ["email": userEmail]
-            
-            //self.ref.child("users").child(user.uid).setValue(userData)
-            
-            Alert.display(self, "Sucesso", "Usuário cadastrado com sucesso", "Realizar Login")
         }
         
         registerButton.isEnabled = true
     }
     
-    func addStyleProps(){
-
+    func goToLoginPage(){
+        performSegue(withIdentifier: "loginPage", sender: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
