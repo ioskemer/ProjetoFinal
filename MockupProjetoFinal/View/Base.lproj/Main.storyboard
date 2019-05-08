@@ -167,7 +167,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" alignment="center" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="gaO-y1-KqK">
-                                <rect key="frame" x="0.0" y="114" width="375" height="482"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="482"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="G9z-LE-reh">
                                         <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
@@ -743,16 +743,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="VhD-pI-hoa">
-                                <rect key="frame" x="0.0" y="94" width="150.5" height="235.5"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="235.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="bnf-xh-TCd">
-                                        <rect key="frame" x="0.0" y="0.0" width="150.5" height="58.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="58.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zby-w1-seh">
-                                                <rect key="frame" x="0.0" y="0.0" width="150.5" height="58.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="58.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyh-ri-Kqu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="150.5" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="v6h-lb-dE3"/>
                                                         </constraints>
@@ -761,7 +761,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LVH-7c-Nbf">
-                                                        <rect key="frame" x="0.0" y="28.5" width="150.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="28.5" width="375" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="HgD-dj-gln"/>
                                                         </constraints>
@@ -781,13 +781,13 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="nFJ-WG-k3w">
-                                        <rect key="frame" x="0.0" y="69.5" width="150.5" height="58.5"/>
+                                        <rect key="frame" x="0.0" y="69.5" width="375" height="58.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1Q7-I7-kGF">
-                                                <rect key="frame" x="0.0" y="0.0" width="150.5" height="58.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="58.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Senha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlk-6s-rA3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="150.5" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="lsz-ZU-PnA"/>
                                                         </constraints>
@@ -796,7 +796,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kZR-ea-haO">
-                                                        <rect key="frame" x="0.0" y="28.5" width="150.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="28.5" width="375" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="A5J-eg-J9V"/>
                                                         </constraints>
@@ -816,10 +816,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CSC-av-b7A">
-                                        <rect key="frame" x="0.0" y="139" width="150.5" height="96.5"/>
+                                        <rect key="frame" x="0.0" y="139" width="375" height="96.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmação Senha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgd-gJ-gmP">
-                                                <rect key="frame" x="0.0" y="0.0" width="150.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="gCj-hp-3ZJ"/>
                                                 </constraints>
@@ -828,7 +828,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Guz-Au-ccy">
-                                                <rect key="frame" x="0.0" y="28.5" width="150.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="28.5" width="375" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="oZk-gV-6RO"/>
                                                 </constraints>
@@ -837,7 +837,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6SU-kI-J3H">
-                                                <rect key="frame" x="0.0" y="66.5" width="150.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="66.5" width="375" height="30"/>
                                                 <state key="normal" title="Atualizar"/>
                                                 <connections>
                                                     <action selector="update:" destination="jV8-Zy-Bm2" eventType="touchUpInside" id="n8o-DX-neZ"/>
@@ -882,13 +882,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hom-id-tp7">
                             <size key="itemSize" width="375" height="136"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="9wS-Ut-kyt" customClass="BatchCollectionViewCell" customModule="MockupProjetoFinal" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="136"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
@@ -977,6 +977,22 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="78b-f9-Jgm">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xU6-Ne-kfU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="xU6-Ne-kfU" secondAttribute="bottom" id="1HB-iT-CVi"/>
+                                <constraint firstItem="xU6-Ne-kfU" firstAttribute="leading" secondItem="78b-f9-Jgm" secondAttribute="leading" id="4PD-tj-Xhk"/>
+                                <constraint firstAttribute="trailing" secondItem="xU6-Ne-kfU" secondAttribute="trailing" id="Sll-4z-U3T"/>
+                                <constraint firstItem="xU6-Ne-kfU" firstAttribute="top" secondItem="78b-f9-Jgm" secondAttribute="top" id="Ui4-24-RSt"/>
+                            </constraints>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="t6e-Of-TGN" id="y2I-KO-5P9"/>
                             <outlet property="delegate" destination="t6e-Of-TGN" id="zf4-LJ-26d"/>
@@ -1018,6 +1034,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tl9-Uf-yf4">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="t6e-Of-TGN" kind="relationship" relationship="rootViewController" id="0Ql-EG-Q8E"/>
                     </connections>
@@ -1119,6 +1138,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JVz-ro-u23"/>
-        <segue reference="niF-L1-cQg"/>
+        <segue reference="FKs-Oy-mdI"/>
     </inferredMetricsTieBreakers>
 </document>

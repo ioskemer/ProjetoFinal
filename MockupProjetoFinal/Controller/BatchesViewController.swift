@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import SwiftyJSON
 
-class BatchesViewController: UICollectionViewController {
+class BatchesViewController: UICollectionViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     var ref = DatabaseReference()
     let storage = Storage.storage()
     @IBOutlet weak var text: UILabel!
@@ -19,12 +19,26 @@ class BatchesViewController: UICollectionViewController {
     var arrayOfImages = [UIImage]()
     var arrayOfIDs = [String]()
     var imagesArray = [UIImage]()
+    var filtered:[Batch] = []
+    let searchController = UISearchController(searchResultsController: nil)
+    var searchActive : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //_ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(BatchesViewController.refreshImages), userInfo: nil, repeats: true)
-
+        self.searchController.searchResultsUpdater = self
+        self.searchController.delegate = self
+        self.searchController.searchBar.delegate = self
+        
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.dimsBackgroundDuringPresentation = true
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Procurar lote"
+        searchController.searchBar.sizeToFit()
+        
+        searchController.searchBar.becomeFirstResponder()
+        
+        self.navigationItem.titleView = searchController.searchBar
     }
     
     @objc func refreshImages(){
@@ -42,14 +56,26 @@ class BatchesViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return batchArray.count
+        if searchActive {
+            return filtered.count
+        }
+        else
+        {
+            return batchArray.count
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BatchCollectionViewCell
         
         var batch = Batch()
-        batch = batchArray[indexPath.row]
+        
+        if searchActive {
+            batch = filtered[indexPath.row]
+        } else {
+            batch = batchArray[indexPath.row]
+        }
+        
         print(batch.image)
         cell.productTitle.text = batch.title
         cell.productDescription.text = batch.description
@@ -83,11 +109,10 @@ class BatchesViewController: UICollectionViewController {
     */
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.definesPresentationContext = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func updateData(){
@@ -111,18 +136,18 @@ class BatchesViewController: UICollectionViewController {
                 newBatch.quantity = Int(batchQuantity) ?? 0
                 newBatch.availableQuantity = Int(batchAvailableQuantity) ?? 0
                 newBatch.price = Float(batchPrice) ?? 0.0
-                let pathReference = self.storage.reference(withPath: "images/\(newBatch.id).png")
+                _ = self.storage.reference(withPath: "images/\(newBatch.id).png")
                 let storageRef = self.storage.reference()
                 let imageRef = storageRef.child("images/\(newBatch.id).png")
                 
                 // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
                 imageRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
-                    if let error = error {
+                    if error != nil {
                         // Uh-oh, an error occurred!
                         print("erro ao baixar iamgem")
                     } else {
                         // Data for "images/island.jpg" is returned
-                        print(data)
+                        //print(data)
                         newBatch.image = UIImage(data: data!)!
                         self.imagesArray.append(UIImage(data: data!)!)
                     self.collectionView.reloadData()
@@ -137,4 +162,46 @@ class BatchesViewController: UICollectionViewController {
             self.collectionView!.reloadData()
         })
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func updateSearchResults(for searchController: UISearchController)
+    {
+        let searchString = searchController.searchBar.text
+        
+        if searchString!.count == 0 {
+            filtered = batchArray
+        } else {
+            filtered = batchArray.filter({ (item) -> Bool in
+                let batch: Batch = item as Batch
+                
+                return (batch.title.lowercased().folding(options: .diacriticInsensitive, locale: .current).contains(searchString!.lowercased().folding(options: .diacriticInsensitive, locale: .current)))
+            })
+        }
+        collectionView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+        collectionView.reloadData()
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        collectionView.reloadData()
+    }
+    
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        if !searchActive {
+            searchActive = true
+            collectionView.reloadData()
+        }
+        
+        searchController.searchBar.resignFirstResponder()
+    }
+    
+
 }

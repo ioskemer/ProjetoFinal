@@ -60,19 +60,18 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBAction func reserveBatch(_ sender: Any) {
         let desiredQuantity = Int(batchQuantity.value)
         let userID = UserDefaults.standard.string(forKey: "currentUserId")
-        let availableQuantity =
         //ref.child("batches").child(batch.id)
         
         
         
         ref.child("batches").child(String(batch.id)).child("reserved").observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
+            _ = snapshot.value as? NSDictionary
  
-            var locationRef = self.ref.child("batches").child(String(self.batch.id)).child("reserved").childByAutoId()
-            locationRef.setValue(["uid": userID, "quantity": desiredQuantity])
+            let locationRef = self.ref.child("batches").child(String(self.batch.id)).child("reserved").childByAutoId()
+            locationRef.setValue(["uid": userID!, "quantity": desiredQuantity])
         })
         
-        var locationRef = self.ref.child("users").child(userID!).child("batches").childByAutoId()
+        let locationRef = self.ref.child("users").child(userID!).child("batches").childByAutoId()
         locationRef.setValue(["batchId": batch.id, "quantity": desiredQuantity])
         
         batch.updateAvailableQuantity(Database.database(), desiredQuantity)
