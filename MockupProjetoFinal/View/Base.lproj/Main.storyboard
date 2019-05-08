@@ -68,6 +68,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="maskString" value="NNNNN-NNN"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cepHasChanged:" destination="JIO-IA-uMF" eventType="editingChanged" id="5DG-YM-qLJ"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zBU-yP-53e">
                                                 <rect key="frame" x="0.0" y="564" width="200" height="30"/>

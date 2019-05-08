@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Alamofire
+import SwiftyJSON
 
 class RegistrationViewController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
@@ -202,11 +204,44 @@ class RegistrationViewController: UIViewController {
         registerButton.isEnabled = true
     }
     
+    func getCepInfo(_ cep: String){
+        let pattern = "[^A-Za-z0-9]+"
+        let result = cep.replacingOccurrences(of: pattern, with: "", options: [.regularExpression])
+        let url = URL(string: "https://viacep.com.br/ws/\(result)/json/")
+        
+        Alamofire.request(url!).responseJSON { response in
+            if let json = response.result.value {
+                let result = JSON(json)
+                if result["erro"].stringValue == "1" {
+                    Alert.display(self, "Erro ao buscar cep", "Não foi encontrado o cep na base dos correios", "Tentar novamente")
+                } else {
+                    self.address.text = result["logradouro"].stringValue
+                    self.address.isUserInteractionEnabled = false
+                    self.address.isEnabled = false
+                    self.city.text = result["localidade"].stringValue
+                    self.city.isUserInteractionEnabled = false
+                    self.city.isEnabled = false
+                    self.state.text = result["uf"].stringValue
+                    self.state.isUserInteractionEnabled = false
+                    self.state.isEnabled = false
+                }
+            } else {
+                
+            }
+        }
+    }
+    
     func goToLoginPage(){
         performSegue(withIdentifier: "loginPage", sender: self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    @IBAction func cepHasChanged(_ sender: Any) {
+        if cep.text!.count == 9 {
+            getCepInfo(cep.text!)
+        }
     }
 }
