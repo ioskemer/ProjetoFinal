@@ -14,22 +14,24 @@ class BatchViewController: UIViewController {
     @IBOutlet weak var productTitle: UILabel!
     @IBOutlet weak var productDescription: UILabel!
     @IBOutlet weak var productPrice: UILabel!
-    @IBOutlet weak var productQuantity: UILabel!
     @IBOutlet weak var productAvailableQuantity: UILabel!
     @IBOutlet weak var buyButton: UIButton!
-    @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet var productImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         productTitle.text = batch.title
         productDescription.text = batch.description
-        productPrice.text = String(batch.price)
-        productQuantity.text = String(batch.quantity)
-        productAvailableQuantity.text = String(batch.availableQuantity)
+        productPrice.text = "R$"+String(batch.price)
+        productAvailableQuantity.text = "Restantes \(String(batch.availableQuantity)) un."
         productImage = UIImageView(image: batch.image)
         if batch.availableQuantity == 0 {
             buyButton.isHidden = true
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        buyButton.layer.cornerRadius = 5
     }
     
     @IBAction func goToBuySection(_ sender: Any) {

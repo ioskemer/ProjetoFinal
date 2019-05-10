@@ -17,9 +17,11 @@ class MyBatchesViewController: UICollectionViewController {
     var batchArray = [Batch]()
     var arrayOfImages = [UIImage]()
     var arrayOfIDs = [String]()
+    let userId = UserDefaults.standard.string(forKey: "currentUserId")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,8 +86,6 @@ class MyBatchesViewController: UICollectionViewController {
     }
     
     func updateData(){
-        let userId = UserDefaults.standard.string(forKey: "currentUserId")
-        
         ref = Database.database().reference()
         dataArray = []
         

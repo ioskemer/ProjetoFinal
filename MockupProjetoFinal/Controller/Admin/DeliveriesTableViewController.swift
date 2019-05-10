@@ -7,19 +7,40 @@
 //
 
 import UIKit
+import Firebase
+import SwiftyJSON
 
 class DeliveriesTableViewController: UITableViewController {
-    var dataArray = ["#4323 Sabão em Pó - Curitiba", "#4324 Sabonete - Pinhais", "#4325 Água 20 litros - Curitiba", "#4326 Munição - Colombo"]
+    let ref = Database.database().reference()
+    var dataArray:[Batch] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
-
+    
+    func updateData(){
+        var count = 0
+        dataArray = []
+        ref.child("batches").observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSArray
+            
+            for batch in value! {
+                if count == 0{
+                    count = 1
+                } else {
+                    let jsonBatch = JSON(batch)
+                    print(jsonBatch["title"].stringValue)
+                    let newBatch = Batch()
+                    newBatch.title = jsonBatch["title"].stringValue
+                    
+                    self.dataArray.append(newBatch)
+                }
+            }
+            self.tableView.reloadData()
+        })
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,13 +56,14 @@ class DeliveriesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
-        cell.textLabel?.text = dataArray[indexPath.row]
+        let batch = dataArray[indexPath.row]
+        cell.textLabel?.text = batch.title
 
         return cell
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        updateData()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     

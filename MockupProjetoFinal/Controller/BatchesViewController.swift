@@ -33,7 +33,7 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
         self.searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.dimsBackgroundDuringPresentation = true
         self.searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Procurar lote"
+        searchController.searchBar.placeholder = "Busca por Palavra Chave"
         searchController.searchBar.sizeToFit()
         
         searchController.searchBar.becomeFirstResponder()
@@ -77,9 +77,9 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
         }
         
         print(batch.image)
-        cell.productTitle.text = batch.title
+        cell.productTitle.text = batch.title.capitalized
         cell.productDescription.text = batch.description
-        cell.productPrice.text = String(batch.price)
+        cell.productPrice.text = "R$" + String(batch.price)
         cell.productAvailableQuantity.text = "\(batch.availableQuantity) unidades."
         //cell.productImage.image = UIImageView(image: 
         

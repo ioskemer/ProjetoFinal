@@ -75,7 +75,23 @@ class ViewController: UIViewController {
     }
     
     func goToRootPage(){
-        performSegue(withIdentifier: "rootPage", sender: self)
+        let userId = UserDefaults.standard.string(forKey: "currentUserId")
+
+        ref = Database.database().reference(); ref.child("users").child(userId!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if value == nil {
+                return
+            }
+            let userData = JSON(value!)
+            
+            let userType = userData["userType"].stringValue
+  
+            if userType == "admin" {
+                self.performSegue(withIdentifier: "adminRootPage", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "rootPage", sender: self)
+            }
+        })
     }
 }
 
