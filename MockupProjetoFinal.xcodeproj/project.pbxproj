@@ -12,6 +12,11 @@
 		132584462277B57E0055A051 /* shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584452277B57E0055A051 /* shopping-cart.png */; };
 		132584482277B5F70055A051 /* storage.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584472277B5F60055A051 /* storage.png */; };
 		1325844A2277B7070055A051 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584492277B7070055A051 /* settings.png */; };
+		13479410228F6A31000383EB /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1347940F228F6A31000383EB /* HistoryTableViewController.swift */; };
+		13479412228F6AFF000383EB /* DeliverBatchInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479411228F6AFF000383EB /* DeliverBatchInfoViewController.swift */; };
+		13479414228F6F8C000383EB /* truck.png in Resources */ = {isa = PBXBuildFile; fileRef = 13479413228F6F8C000383EB /* truck.png */; };
+		13479416228F7013000383EB /* otherClock.png in Resources */ = {isa = PBXBuildFile; fileRef = 13479415228F7013000383EB /* otherClock.png */; };
+		13479418228F72E1000383EB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479417228F72E1000383EB /* User.swift */; };
 		13567C072261420000D09FC6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13567C062261420000D09FC6 /* Card.swift */; };
 		1359744222580B97005318AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1359744122580B97005318AB /* GoogleService-Info.plist */; };
 		1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359744322581FB4005318AB /* MyOrdersViewController.swift */; };
@@ -56,6 +61,11 @@
 		132584452277B57E0055A051 /* shopping-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping-cart.png"; sourceTree = "<group>"; };
 		132584472277B5F60055A051 /* storage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storage.png; sourceTree = "<group>"; };
 		132584492277B7070055A051 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		1347940F228F6A31000383EB /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		13479411228F6AFF000383EB /* DeliverBatchInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliverBatchInfoViewController.swift; sourceTree = "<group>"; };
+		13479413228F6F8C000383EB /* truck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = truck.png; sourceTree = "<group>"; };
+		13479415228F7013000383EB /* otherClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = otherClock.png; sourceTree = "<group>"; };
+		13479417228F72E1000383EB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		13567C062261420000D09FC6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		1359744122580B97005318AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1359744322581FB4005318AB /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +127,7 @@
 				13567C062261420000D09FC6 /* Card.swift */,
 				1363177A22653B9B008BBB85 /* Batch.swift */,
 				13E0EAE62280EF59007B49C2 /* Validator.swift */,
+				13479417228F72E1000383EB /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,6 +140,8 @@
 				132584432277B2770055A051 /* icon.png */,
 				132584452277B57E0055A051 /* shopping-cart.png */,
 				132584492277B7070055A051 /* settings.png */,
+				13479415228F7013000383EB /* otherClock.png */,
+				13479413228F6F8C000383EB /* truck.png */,
 				132584472277B5F60055A051 /* storage.png */,
 				13E1E6CD2255635600E0F348 /* LaunchScreen.storyboard */,
 			);
@@ -159,7 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				1363177D226541E3008BBB85 /* DeliveriesTableViewController.swift */,
+				1347940F228F6A31000383EB /* HistoryTableViewController.swift */,
 				13631781226550B0008BBB85 /* GoogleMapsViewController.swift */,
+				13479411228F6AFF000383EB /* DeliverBatchInfoViewController.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -329,8 +344,10 @@
 				132584442277B2770055A051 /* icon.png in Resources */,
 				1359744222580B97005318AB /* GoogleService-Info.plist in Resources */,
 				13E1E6CC2255635600E0F348 /* Assets.xcassets in Resources */,
+				13479416228F7013000383EB /* otherClock.png in Resources */,
 				13E1E6CA2255635500E0F348 /* Main.storyboard in Resources */,
 				132584462277B57E0055A051 /* shopping-cart.png in Resources */,
+				13479414228F6F8C000383EB /* truck.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13479412228F6AFF000383EB /* DeliverBatchInfoViewController.swift in Sources */,
 				13631779226535CA008BBB85 /* BuyBatchViewController.swift in Sources */,
 				13852A04225E9F8D0058BDA7 /* Alert.swift in Sources */,
 				1305C20C2271287C00D84898 /* MyBatchesViewController.swift in Sources */,
@@ -438,6 +456,7 @@
 				13E0EAEC2280FF62007B49C2 /* CollectionView+EmptyMessage.swift in Sources */,
 				1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */,
 				13852A32225EB2E90058BDA7 /* CreditCardViewController.swift in Sources */,
+				13479410228F6A31000383EB /* HistoryTableViewController.swift in Sources */,
 				13631782226550B0008BBB85 /* GoogleMapsViewController.swift in Sources */,
 				1359744922582283005318AB /* SettingsViewController.swift in Sources */,
 				13852A22225EAC000058BDA7 /* MyCardsTableViewController.swift in Sources */,
@@ -448,6 +467,7 @@
 				13567C072261420000D09FC6 /* Card.swift in Sources */,
 				13E0EAEA2280F035007B49C2 /* String+CPFValidation.swift in Sources */,
 				13E1E6C72255635500E0F348 /* ViewController.swift in Sources */,
+				13479418228F72E1000383EB /* User.swift in Sources */,
 				13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */,
 				1359744B2258277E005318AB /* ProfileViewController.swift in Sources */,
 				13E1E6E32255775600E0F348 /* BatchCollectionViewCell.swift in Sources */,

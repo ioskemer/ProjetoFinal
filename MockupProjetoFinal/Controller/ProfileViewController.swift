@@ -15,6 +15,11 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordConfirmation: UITextField!
+    @IBOutlet weak var cpf: UITextField!
+    @IBOutlet weak var cep: UITextField!
+    @IBOutlet weak var address: UITextField!
+    @IBOutlet weak var number: UITextField!
+    var userId = UserDefaults.standard.string(forKey: "currentUserId")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +27,35 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        var ref = Database.database().reference()
+        ref.child("users").child(userId!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if value == nil {
+                return
+            }
+            let userData = JSON(value!)
+            var newUser = User()
+            
+            let userName = userData["name"].stringValue
+            let userCpf = userData["cpf"].stringValue
+            let userCep = userData["cep"].stringValue
+            let userAddress = userData["address"].stringValue
+            let userNumber = userData["number"].stringValue
+            let userType = userData["userType"].stringValue
+            
+            newUser.name = userName
+            newUser.cpf = userCpf
+            newUser.cep = userCep
+            newUser.address = userAddress
+            newUser.number = userNumber
+            
+            self.cpf.text = newUser.cpf
+            self.cep.text = newUser.cep
+            self.address.text = newUser.address
+            self.number.text = newUser.number
+        })
+    }
 
     /*
     // MARK: - Navigation
@@ -60,6 +94,10 @@ class ProfileViewController: UIViewController {
         
         var userId = UserDefaults.standard.string(forKey: "currentUserId")
         ref.child("users/\(userId!)/email").setValue(email.text!)
+        ref.child("users/\(userId!)/cpf").setValue(cpf.text!)
+        ref.child("users/\(userId!)/cep").setValue(cep.text!)
+        ref.child("users/\(userId!)/number").setValue(number.text!)
+        ref.child("users/\(userId!)/address").setValue(address.text!)
         
         Alert.display(self, "Sucesso!", "Usuário atualizado com sucesso", "Ok!")
     }

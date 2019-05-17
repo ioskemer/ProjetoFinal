@@ -17,6 +17,8 @@ class Batch {
     var availableQuantity: Int
     var price: Float
     var image: UIImage
+    var city: String
+    var status: String
     
     init(){
         self.id = 0
@@ -26,6 +28,8 @@ class Batch {
         self.quantity = 0
         self.price = 0.0
         self.image = UIImage()
+        self.city = ""
+        self.status = ""
     }
     
     func updateAvailableQuantity(_ db: Database, _ qtd: Int){
@@ -37,7 +41,12 @@ class Batch {
             let oldAvailableQuantity = value?["availableQuantity"] as? Int ?? 0
             let newAvailableQuantity = oldAvailableQuantity - qtd
             
+            
             ref.child("batches/\(String(self.id))/availableQuantity").setValue(newAvailableQuantity)
+            
+            if (newAvailableQuantity == 0) {
+                ref.child("batches/\(String(self.id))/status").setValue("closed")
+            }
         })
     }
 }

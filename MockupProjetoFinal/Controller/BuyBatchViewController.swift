@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftyJSON
 
 class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var batch = Batch()
@@ -61,14 +62,28 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let desiredQuantity = Int(batchQuantity.value)
         let userID = UserDefaults.standard.string(forKey: "currentUserId")
         //ref.child("batches").child(batch.id)
+        var userCep = ""
+        var userAddress = ""
+        var userNumber = ""
+        var userCpf = ""
         
-        
-        
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if value == nil {
+                return
+            }
+            let userData = JSON(value!)
+            
+            userCep = userData["cep"].stringValue
+            userAddress = userData["address"].stringValue
+            userNumber = userData["number"].stringValue
+            userCpf = userData["cpf"].stringValue
+        })
         ref.child("batches").child(String(batch.id)).child("reserved").observeSingleEvent(of: .value, with: { (snapshot) in
             _ = snapshot.value as? NSDictionary
  
             let locationRef = self.ref.child("batches").child(String(self.batch.id)).child("reserved").childByAutoId()
-            locationRef.setValue(["uid": userID!, "quantity": desiredQuantity])
+            locationRef.setValue(["uid": userID!, "quantity": desiredQuantity, "cpf": userCpf, "address": "\(userAddress), \(userNumber), \(userCep)"])
         })
         
         let locationRef = self.ref.child("users").child(userID!).child("batches").childByAutoId()

@@ -1,8 +1,8 @@
 //
-//  DeliveriesTableViewController.swift
+//  HistoryTableViewController.swift
 //  MockupProjetoFinal
 //
-//  Created by PUCPR on 15/04/19.
+//  Created by PUCPR on 17/05/19.
 //  Copyright © 2019 PUCPR. All rights reserved.
 //
 
@@ -10,15 +10,16 @@ import UIKit
 import Firebase
 import SwiftyJSON
 
-class DeliveriesTableViewController: UITableViewController {
+class HistoryTableViewController: UITableViewController {
     let ref = Database.database().reference()
     var dataArray:[Batch] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        updateData()
     }
-    
+
     func updateData(){
         var count = 0
         dataArray = []
@@ -40,8 +41,6 @@ class DeliveriesTableViewController: UITableViewController {
             self.tableView.reloadData()
         })
     }
-    
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -53,7 +52,6 @@ class DeliveriesTableViewController: UITableViewController {
         return dataArray.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let batch = dataArray[indexPath.row]
@@ -61,17 +59,7 @@ class DeliveriesTableViewController: UITableViewController {
 
         return cell
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        updateData()
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-
+ 
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -107,13 +95,14 @@ class DeliveriesTableViewController: UITableViewController {
     }
     */
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*
+    // MARK: - Navigation
 
-        if segue.identifier == "deliverBatchInfo" {
-            let vc : DeliverBatchInfoViewController = segue.destination as! DeliverBatchInfoViewController
-            
-            vc.batch = dataArray[tableView.indexPathForSelectedRow!.row]
-        }
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
     }
+    */
 
 }

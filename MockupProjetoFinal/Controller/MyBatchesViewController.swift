@@ -49,7 +49,7 @@ class MyBatchesViewController: UICollectionViewController {
         batch = batchArray[indexPath.row]
         
         cell.productTitle.text = batch.title
-        cell.productDescription.text = batch.description
+        cell.boughtProductStatus.text = batch.status
         
         return cell
     }
@@ -116,13 +116,25 @@ class MyBatchesViewController: UICollectionViewController {
                 
                 let batchTitle = value?["title"] as? String ?? ""
                 let batchDescription = value?["description"] as? String ?? ""
+                let batchStatus = value?["status"] as? String ?? ""
                 
                 let newBatch = Batch()
                 newBatch.id = Int(batchId)!
                 newBatch.title = batchTitle
                 newBatch.description = batchDescription
+                newBatch.status = batchStatus
                 
-                self.batchArray.append(newBatch)
+                if self.batchArray.count == 0 {
+                    self.batchArray.append(newBatch)
+                }
+                
+                for batch in self.batchArray {
+                    if batch.id == newBatch.id {
+                        
+                    } else {
+                        self.batchArray.append(newBatch)
+                    }
+                }
                 
                 self.collectionView!.reloadData()
             })

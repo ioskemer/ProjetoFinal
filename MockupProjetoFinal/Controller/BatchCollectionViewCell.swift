@@ -14,4 +14,6 @@ class BatchCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productAvailableQuantity: UILabel!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productDescription: UILabel!
+    @IBOutlet weak var boughtProductQuantity: UILabel!
+    @IBOutlet weak var boughtProductStatus: UILabel!
 }
