@@ -23,23 +23,10 @@ class GoogleMapsViewController: UIViewController {
         
         let address = "Rua Pedro Eloy de Souza 646, Curitiba Pr"
         
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(address) { (placemarks, error) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-                else {
-                    // handle no location found
-                    return
-            }
-            
-            // Use your location
-        }
-        
         let string = "https://www.google.com/maps/dir/?api=1&origin=Rua Pedro Eloy de Souza 656 Curitiba PR&destination=Sao Paulo,Sao Paulo&travelmode=driving&waypoints=PUCPR&waypoint_place_ids=ChIJdUyx15R95kcRj85ZX8H8OAU%7CChIJKzGHdEgM5EcR_OBTT3nQoEA%7CChIJG2LvQNCI4kcRKXNoAsPi1Mc%7CChIJ06tnGbxCCkgRsfNjEQMwUsc"
         let encoded = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let url = URL(string: encoded)!
-        UIApplication.shared.open(url)
+       // UIApplication.shared.open(url)
     }
     
     func showMarker(position: CLLocationCoordinate2D){

@@ -9,22 +9,30 @@
 import UIKit
 import Firebase
 import SwiftyJSON
+import GoogleMaps
+import CoreLocation
 
-class DeliverBatchInfoViewController: UIViewController {
+class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegate {
     var batch = Batch()
     var usersArray = [String]()
     var addressArray = [String]()
     let ref = Database.database().reference()
+    @IBOutlet weak var googleMap: GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let camera = GMSCameraPosition.camera(withLatitude: 37.36, longitude: -122.0, zoom: 6.0)
+        googleMap.camera = camera
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = batch.city
         
         getBatches()
+        
+
+        
     }
 
     func getBatches(){
