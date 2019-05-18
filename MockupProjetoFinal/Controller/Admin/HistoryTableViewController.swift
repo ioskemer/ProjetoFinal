@@ -34,8 +34,11 @@ class HistoryTableViewController: UITableViewController {
                     print(jsonBatch["title"].stringValue)
                     let newBatch = Batch()
                     newBatch.title = jsonBatch["title"].stringValue
+                    newBatch.status = jsonBatch["batchStatus"].stringValue
                     
-                    self.dataArray.append(newBatch)
+                    if (newBatch.status == "delivered"){
+                        self.dataArray.append(newBatch)
+                    }
                 }
             }
             self.tableView.reloadData()

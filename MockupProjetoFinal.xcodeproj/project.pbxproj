@@ -17,6 +17,7 @@
 		13479414228F6F8C000383EB /* truck.png in Resources */ = {isa = PBXBuildFile; fileRef = 13479413228F6F8C000383EB /* truck.png */; };
 		13479416228F7013000383EB /* otherClock.png in Resources */ = {isa = PBXBuildFile; fileRef = 13479415228F7013000383EB /* otherClock.png */; };
 		13479418228F72E1000383EB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13479417228F72E1000383EB /* User.swift */; };
+		1347941C228F8177000383EB /* AdminSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1347941B228F8177000383EB /* AdminSettingsViewController.swift */; };
 		13567C072261420000D09FC6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13567C062261420000D09FC6 /* Card.swift */; };
 		1359744222580B97005318AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1359744122580B97005318AB /* GoogleService-Info.plist */; };
 		1359744422581FB4005318AB /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359744322581FB4005318AB /* MyOrdersViewController.swift */; };
@@ -66,6 +67,7 @@
 		13479413228F6F8C000383EB /* truck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = truck.png; sourceTree = "<group>"; };
 		13479415228F7013000383EB /* otherClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = otherClock.png; sourceTree = "<group>"; };
 		13479417228F72E1000383EB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1347941B228F8177000383EB /* AdminSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSettingsViewController.swift; sourceTree = "<group>"; };
 		13567C062261420000D09FC6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		1359744122580B97005318AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1359744322581FB4005318AB /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				1347940F228F6A31000383EB /* HistoryTableViewController.swift */,
 				13631781226550B0008BBB85 /* GoogleMapsViewController.swift */,
 				13479411228F6AFF000383EB /* DeliverBatchInfoViewController.swift */,
+				1347941B228F8177000383EB /* AdminSettingsViewController.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				13E1E6C72255635500E0F348 /* ViewController.swift in Sources */,
 				13479418228F72E1000383EB /* User.swift in Sources */,
 				13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */,
+				1347941C228F8177000383EB /* AdminSettingsViewController.swift in Sources */,
 				1359744B2258277E005318AB /* ProfileViewController.swift in Sources */,
 				13E1E6E32255775600E0F348 /* BatchCollectionViewCell.swift in Sources */,
 			);

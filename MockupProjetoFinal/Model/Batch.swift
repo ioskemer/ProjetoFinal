@@ -45,7 +45,7 @@ class Batch {
             ref.child("batches/\(String(self.id))/availableQuantity").setValue(newAvailableQuantity)
             
             if (newAvailableQuantity == 0) {
-                ref.child("batches/\(String(self.id))/status").setValue("closed")
+                ref.child("batches/\(String(self.id))/batchStatus").setValue("closed")
             }
         })
     }

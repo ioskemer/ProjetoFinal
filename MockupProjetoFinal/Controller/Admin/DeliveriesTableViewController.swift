@@ -32,9 +32,13 @@ class DeliveriesTableViewController: UITableViewController {
                     let jsonBatch = JSON(batch)
                     print(jsonBatch["title"].stringValue)
                     let newBatch = Batch()
+                    newBatch.id = Int(jsonBatch["id"].stringValue)!
                     newBatch.title = jsonBatch["title"].stringValue
+                    newBatch.status = jsonBatch["batchStatus"].stringValue
                     
-                    self.dataArray.append(newBatch)
+                    if (newBatch.status == "closed"){
+                        self.dataArray.append(newBatch)
+                    }
                 }
             }
             self.tableView.reloadData()

@@ -256,14 +256,39 @@
         <!--Realizadas-->
         <scene sceneID="OjM-rC-3LG">
             <objects>
-                <viewController title="Realizadas" id="QKG-NW-Ruz" sceneMemberID="viewController">
+                <viewController title="Realizadas" id="QKG-NW-Ruz" customClass="AdminSettingsViewController" customModule="MockupProjetoFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wib-8Q-qml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QLV-QT-FG6">
+                                <rect key="frame" x="0.0" y="60" width="375" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Yz-oa-Qce">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <state key="normal" title="Sair"/>
+                                        <connections>
+                                            <action selector="logout:" destination="QKG-NW-Ruz" eventType="touchUpInside" id="CRg-Ea-WjT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6Yz-oa-Qce" firstAttribute="top" secondItem="QLV-QT-FG6" secondAttribute="top" constant="40" id="u7b-p6-IJ0"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QLV-QT-FG6" firstAttribute="leading" secondItem="lLb-yn-AGL" secondAttribute="leading" id="TeB-AA-66k"/>
+                            <constraint firstItem="QLV-QT-FG6" firstAttribute="top" secondItem="lLb-yn-AGL" secondAttribute="top" constant="40" id="V94-uC-k9a"/>
+                            <constraint firstItem="lLb-yn-AGL" firstAttribute="trailing" secondItem="QLV-QT-FG6" secondAttribute="trailing" id="sNr-7S-M3h"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lLb-yn-AGL"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Configurações" image="settings" selectedImage="settings" id="cyR-k1-tSX"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="loginPage" id="vY8-gJ-MhK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1FU-9T-iC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -277,33 +302,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OHS-l4-MNO">
-                                <rect key="frame" x="0.0" y="114" width="415" height="504"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OHS-l4-MNO">
+                                <rect key="frame" x="87" y="104" width="200" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2R-Pw-Sae">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.68118776889999999" blue="0.075253616950000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="W95-oN-wjC"/>
+                                            <constraint firstAttribute="width" constant="200" id="tDe-Ux-dJr"/>
+                                        </constraints>
+                                        <state key="normal" title="Iniciar Rota">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lLz-Wn-z6Y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2R-Pw-Sae">
-                                <rect key="frame" x="87" y="130" width="200" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.68118776889999999" blue="0.075253616950000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="W95-oN-wjC"/>
-                                    <constraint firstAttribute="width" constant="200" id="tDe-Ux-dJr"/>
-                                </constraints>
-                                <state key="normal" title="Iniciar Rota">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lLz-Wn-z6Y"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OHS-l4-MNO" firstAttribute="top" secondItem="RnS-Yd-ncX" secondAttribute="top" id="4gk-dL-w3E"/>
-                            <constraint firstItem="OHS-l4-MNO" firstAttribute="leading" secondItem="RnS-Yd-ncX" secondAttribute="leading" constant="40" id="OMp-Zb-rbO"/>
-                            <constraint firstItem="RnS-Yd-ncX" firstAttribute="bottom" secondItem="OHS-l4-MNO" secondAttribute="bottom" id="V6M-6C-g4w"/>
-                            <constraint firstItem="OHS-l4-MNO" firstAttribute="top" secondItem="RnS-Yd-ncX" secondAttribute="top" constant="50" id="WkS-6i-zsm"/>
-                            <constraint firstItem="OHS-l4-MNO" firstAttribute="trailing" secondItem="RnS-Yd-ncX" secondAttribute="trailing" constant="40" id="Z2F-QW-UqC"/>
-                            <constraint firstItem="RnS-Yd-ncX" firstAttribute="trailing" secondItem="OHS-l4-MNO" secondAttribute="trailing" id="h4v-kJ-EtF"/>
-                            <constraint firstItem="OHS-l4-MNO" firstAttribute="leading" secondItem="RnS-Yd-ncX" secondAttribute="leading" id="ybz-Vr-NA6"/>
+                            <constraint firstItem="OHS-l4-MNO" firstAttribute="top" secondItem="RnS-Yd-ncX" secondAttribute="top" constant="40" id="fh6-RT-BT3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RnS-Yd-ncX"/>
                     </view>
@@ -1395,6 +1416,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JVz-ro-u23"/>
-        <segue reference="FKs-Oy-mdI"/>
+        <segue reference="vY8-gJ-MhK"/>
     </inferredMetricsTieBreakers>
 </document>
