@@ -30,7 +30,6 @@ class DeliveriesTableViewController: UITableViewController {
                     count = 1
                 } else {
                     let jsonBatch = JSON(batch)
-                    print(jsonBatch["title"].stringValue)
                     let newBatch = Batch()
                     newBatch.id = Int(jsonBatch["id"].stringValue)!
                     newBatch.title = jsonBatch["title"].stringValue

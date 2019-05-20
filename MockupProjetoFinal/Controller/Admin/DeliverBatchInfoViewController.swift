@@ -11,6 +11,7 @@ import Firebase
 import SwiftyJSON
 import GoogleMaps
 import CoreLocation
+import MapKit
 
 class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegate {
     var batch = Batch()
@@ -18,21 +19,37 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
     var addressArray = [String]()
     let ref = Database.database().reference()
     @IBOutlet weak var googleMap: GMSMapView!
+    @IBOutlet weak var startRoute: UIButton!
+    let locationManager = CLLocationManager()
+    var userCoordinates = [Double]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        let camera = GMSCameraPosition.camera(withLatitude: 37.36, longitude: -122.0, zoom: 6.0)
-        googleMap.camera = camera
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.title = batch.city
+        
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+        startRoute.isEnabled = false
+        self.navigationItem.title = batch.title
         
         getBatches()
         
-
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+        marker.title = "Sydney"
+        marker.snippet = "Australia"
+        marker.map = mapView
+        
+        googleMap = mapView
     }
 
     func getBatches(){
@@ -56,7 +73,8 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
     
     func loadBatches(){
         addressArray = []
-        
+        addressArray.append("Rua Visconde de Guarapuava 1440, Curitiba")
+        var count = 0
         let unique = Array(Set(usersArray))
         for userId in unique {
             ref.child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -65,7 +83,7 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
                 if value == nil {
                     return
                 }
-                
+
                 let jsonUser = JSON(value!)
 
                 let address = jsonUser["address"].stringValue
@@ -76,6 +94,12 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
                 let fullAddress = "\(address), \(number), \(cep), \(city)"
 
                 self.addressArray.append(fullAddress)
+                
+                if count == unique.count-1 {
+                    self.startRoute.isEnabled = true
+                }
+                
+                count += 1
             })
         }
     }
@@ -89,5 +113,33 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
         // Pass the selected object to the new view controller.
     }
     */
+    private func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        userCoordinates = [locValue.latitude, locValue.longitude]
+        
+        print("cheguei aquii")
+        
+//        let address = CLGeocoder.init()
+//
+//        address.reverseGeocodeLocation(CLLocation.init(latitude: userCoordinates.first!, longitude:userCoordinates.last!)) { (places, error) in
+//            if error == nil{
+//                if let place = places{
+//                    print("lugar eh")
+//                    print(place)
+//                }
+//            }
+//        }
+    }
 
+    @IBAction func startRoute(_ sender: Any) {
+        print(userCoordinates)
+        let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let next = mainStoryboard.instantiateViewController(withIdentifier: "RoutingViewController") as! RoutingViewController
+
+        next.routeUrlArray = addressArray
+        next.navTitle = batch.title
+        
+        self.navigationController?.pushViewController(next, animated: true)
+    }
 }

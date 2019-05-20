@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1305C20C2271287C00D84898 /* MyBatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305C20B2271287C00D84898 /* MyBatchesViewController.swift */; };
+		1310F83C2293591900670962 /* RoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310F83B2293591900670962 /* RoutingViewController.swift */; };
 		132584442277B2770055A051 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584432277B2770055A051 /* icon.png */; };
 		132584462277B57E0055A051 /* shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584452277B57E0055A051 /* shopping-cart.png */; };
 		132584482277B5F70055A051 /* storage.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584472277B5F60055A051 /* storage.png */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		1305C20B2271287C00D84898 /* MyBatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBatchesViewController.swift; sourceTree = "<group>"; };
+		1310F83B2293591900670962 /* RoutingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingViewController.swift; sourceTree = "<group>"; };
 		132584432277B2770055A051 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		132584452277B57E0055A051 /* shopping-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping-cart.png"; sourceTree = "<group>"; };
 		132584472277B5F60055A051 /* storage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storage.png; sourceTree = "<group>"; };
@@ -173,10 +175,11 @@
 		1363177C226541CA008BBB85 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
-				1363177D226541E3008BBB85 /* DeliveriesTableViewController.swift */,
 				1347940F228F6A31000383EB /* HistoryTableViewController.swift */,
 				13631781226550B0008BBB85 /* GoogleMapsViewController.swift */,
+				1363177D226541E3008BBB85 /* DeliveriesTableViewController.swift */,
 				13479411228F6AFF000383EB /* DeliverBatchInfoViewController.swift */,
+				1310F83B2293591900670962 /* RoutingViewController.swift */,
 				1347941B228F8177000383EB /* AdminSettingsViewController.swift */,
 			);
 			path = Admin;
@@ -473,6 +476,7 @@
 				13479418228F72E1000383EB /* User.swift in Sources */,
 				13E1E6C52255635500E0F348 /* AppDelegate.swift in Sources */,
 				1347941C228F8177000383EB /* AdminSettingsViewController.swift in Sources */,
+				1310F83C2293591900670962 /* RoutingViewController.swift in Sources */,
 				1359744B2258277E005318AB /* ProfileViewController.swift in Sources */,
 				13E1E6E32255775600E0F348 /* BatchCollectionViewCell.swift in Sources */,
 			);
