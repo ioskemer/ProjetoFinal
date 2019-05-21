@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1305C20C2271287C00D84898 /* MyBatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305C20B2271287C00D84898 /* MyBatchesViewController.swift */; };
 		1310F83C2293591900670962 /* RoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310F83B2293591900670962 /* RoutingViewController.swift */; };
+		1310F84022937C9800670962 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310F83F22937C9800670962 /* PopOverViewController.swift */; };
 		132584442277B2770055A051 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584432277B2770055A051 /* icon.png */; };
 		132584462277B57E0055A051 /* shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584452277B57E0055A051 /* shopping-cart.png */; };
 		132584482277B5F70055A051 /* storage.png in Resources */ = {isa = PBXBuildFile; fileRef = 132584472277B5F60055A051 /* storage.png */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		1305C20B2271287C00D84898 /* MyBatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBatchesViewController.swift; sourceTree = "<group>"; };
 		1310F83B2293591900670962 /* RoutingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingViewController.swift; sourceTree = "<group>"; };
+		1310F83F22937C9800670962 /* PopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 		132584432277B2770055A051 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		132584452277B57E0055A051 /* shopping-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping-cart.png"; sourceTree = "<group>"; };
 		132584472277B5F60055A051 /* storage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storage.png; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				13479411228F6AFF000383EB /* DeliverBatchInfoViewController.swift */,
 				1310F83B2293591900670962 /* RoutingViewController.swift */,
 				1347941B228F8177000383EB /* AdminSettingsViewController.swift */,
+				1310F83F22937C9800670962 /* PopOverViewController.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 			files = (
 				13479412228F6AFF000383EB /* DeliverBatchInfoViewController.swift in Sources */,
 				13631779226535CA008BBB85 /* BuyBatchViewController.swift in Sources */,
+				1310F84022937C9800670962 /* PopOverViewController.swift in Sources */,
 				13852A04225E9F8D0058BDA7 /* Alert.swift in Sources */,
 				1305C20C2271287C00D84898 /* MyBatchesViewController.swift in Sources */,
 				1363177B22653B9B008BBB85 /* Batch.swift in Sources */,

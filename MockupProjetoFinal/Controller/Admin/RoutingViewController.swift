@@ -38,8 +38,23 @@ class RoutingViewController: UIViewController {
         let request = NSURLRequest(url: url as URL);
         webView.loadRequest(request as URLRequest);
         self.navigationItem.title = navTitle
+        let rightBarButtonItem = UIBarButtonItem.init(title: "+ Info", style: .done, target: self, action: #selector(RoutingViewController.openPopOver))
+        
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
-
+    
+    @objc func openPopOver() {
+        self.performSegue(withIdentifier: "popover", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "popover" {
+            let vc : PopOverViewController = segue.destination as! PopOverViewController
+            
+            vc.teste = "oi"
+        }
+    }
     /*
     // MARK: - Navigation
 
