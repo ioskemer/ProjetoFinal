@@ -1,23 +1,13 @@
 import UIKit
+import SwiftyJSON
 
-class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PopOverViewController: UITableViewController {
     var teste = ""
-    @IBOutlet weak var Popupview: UIView!
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    var names: [String] = ["Mumbai","New York","Tokyo","London","Beijing","Sydney","Wellington","Madrid","Rome","Cape Town","Ottawa"]
+    var info: [JSON] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        // Apply radius to Popupview
-        Popupview.layer.cornerRadius = 10
-        Popupview.layer.masksToBounds = true
-        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,33 +15,31 @@ class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-                navigationController?.setNavigationBarHidden(true, animated: animated)
+                navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     // Returns count of items in tableView
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.names.count;
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.info.count;
     }
     
     
     // Select item from tableView
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
     
     //Assign values for tableView
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = names[indexPath.row]
+        let userName = info[indexPath.row]["name"].stringValue
+        let userCpf = info[indexPath.row]["cpf"].stringValue
+        let userQuantity = info[indexPath.row]["quantity"].stringValue
+        
+        cell.textLabel?.text = "\(userName) - \(userCpf) - \(userQuantity)"
         
         return cell
-    }
-    
-    // Close PopUp
-    @IBAction func closePopup(_ sender: Any) {
-        
-        _ = navigationController?.popViewController(animated: true)
     }
 }

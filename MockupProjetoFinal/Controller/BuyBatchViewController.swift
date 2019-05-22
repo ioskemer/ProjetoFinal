@@ -66,6 +66,7 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         var userAddress = ""
         var userNumber = ""
         var userCpf = ""
+        var userName = ""
         
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -75,6 +76,7 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             let userData = JSON(value!)
             
             userCep = userData["cep"].stringValue
+            userName = userData["name"].stringValue
             userAddress = userData["address"].stringValue
             userNumber = userData["number"].stringValue
             userCpf = userData["cpf"].stringValue
@@ -83,7 +85,7 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             _ = snapshot.value as? NSDictionary
  
             let locationRef = self.ref.child("batches").child(String(self.batch.id)).child("reserved").childByAutoId()
-            locationRef.setValue(["uid": userID!, "quantity": desiredQuantity, "cpf": userCpf, "address": "\(userAddress), \(userNumber), \(userCep)"])
+            locationRef.setValue(["uid": userID!, "quantity": desiredQuantity, "cpf": userCpf, "address": "\(userAddress), \(userNumber), \(userCep)", "name": userName])
         })
         
         let locationRef = self.ref.child("users").child(userID!).child("batches").childByAutoId()

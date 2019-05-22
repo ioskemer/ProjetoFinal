@@ -81,8 +81,7 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
         cell.productDescription.text = batch.description
         cell.productPrice.text = "R$" + String(batch.price)
         cell.productAvailableQuantity.text = "\(batch.availableQuantity) unidades."
-        //cell.productImage.image = UIImageView(image: 
-        
+        cell.productImage.image = batch.image
         return cell
     }
     
@@ -150,7 +149,8 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
                         //print(data)
                         newBatch.image = UIImage(data: data!)!
                         self.imagesArray.append(UIImage(data: data!)!)
-                    self.collectionView.reloadData()
+                        self.batchArray.append(newBatch)
+                        self.collectionView.reloadData()
                     }
                 }
                 if (count > 0){

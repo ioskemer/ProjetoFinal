@@ -182,8 +182,8 @@
 				1363177D226541E3008BBB85 /* DeliveriesTableViewController.swift */,
 				13479411228F6AFF000383EB /* DeliverBatchInfoViewController.swift */,
 				1310F83B2293591900670962 /* RoutingViewController.swift */,
-				1347941B228F8177000383EB /* AdminSettingsViewController.swift */,
 				1310F83F22937C9800670962 /* PopOverViewController.swift */,
+				1347941B228F8177000383EB /* AdminSettingsViewController.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";

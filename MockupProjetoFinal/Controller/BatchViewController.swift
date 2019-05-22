@@ -24,7 +24,7 @@ class BatchViewController: UIViewController {
         productDescription.text = batch.description
         productPrice.text = "R$"+String(batch.price)
         productAvailableQuantity.text = "Restantes \(String(batch.availableQuantity)) un."
-        productImage = UIImageView(image: batch.image)
+        productImage.image = batch.image
         if batch.availableQuantity == 0 {
             buyButton.isHidden = true
         }
