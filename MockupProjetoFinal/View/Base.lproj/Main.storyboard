@@ -333,11 +333,6 @@
                                     <constraint firstItem="h2R-Pw-Sae" firstAttribute="top" secondItem="vhy-wl-Lvs" secondAttribute="bottom" constant="20" id="Y35-Hb-Pxn"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kq3-88-Orb">
-                                <rect key="frame" x="179" y="571" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1222,10 +1217,11 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sq0-wY-ff9">
                                             <rect key="frame" x="20" y="20" width="96" height="96"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RI7-5G-TR1">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="82"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RI7-5G-TR1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="77C-Zl-hUS"/>
+                                                        <constraint firstAttribute="height" constant="80" id="NyB-xv-gQn"/>
+                                                        <constraint firstAttribute="width" constant="100" id="YhZ-qK-3Nv"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>

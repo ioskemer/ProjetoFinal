@@ -22,6 +22,7 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
     var filtered:[Batch] = []
     let searchController = UISearchController(searchResultsController: nil)
     var searchActive : Bool = false
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +39,16 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
         
         searchController.searchBar.becomeFirstResponder()
         
-        self.navigationItem.titleView = searchController.searchBar
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        collectionView.alwaysBounceVertical = true
+        collectionView.refreshControl = refreshControl // iOS 10+
     }
     
-    @objc func refreshImages(){
-        print("reloading")
-        collectionView!.reloadData()
+    
+    @objc
+    private func didPullToRefresh(_ sender: Any) {
+        updateData()
+        refreshControl.endRefreshing()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -109,6 +114,7 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         self.definesPresentationContext = true
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -135,7 +141,7 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
                 newBatch.quantity = Int(batchQuantity) ?? 0
                 newBatch.availableQuantity = Int(batchAvailableQuantity) ?? 0
                 newBatch.price = Float(batchPrice) ?? 0.0
-                _ = self.storage.reference(withPath: "images/\(newBatch.id).png")
+                //_ = self.storage.reference(withPath: "images/\(newBatch.id).png")
                 let storageRef = self.storage.reference()
                 let imageRef = storageRef.child("images/\(newBatch.id).png")
                 
@@ -149,7 +155,6 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
                         //print(data)
                         newBatch.image = UIImage(data: data!)!
                         self.imagesArray.append(UIImage(data: data!)!)
-                        self.batchArray.append(newBatch)
                         self.collectionView.reloadData()
                     }
                 }

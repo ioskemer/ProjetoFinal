@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+import CoreLocation
 
 class RoutingViewController: UIViewController {
     @IBOutlet weak var webView: UIWebView!
@@ -17,12 +18,15 @@ class RoutingViewController: UIViewController {
     var batchInfo: [JSON] = []
     var coordArray = [String]()
     var urlArray = [URL]()
+    var doubleCoordArray = [[Double]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         coordArray = []
-        coordArray.append(routeUrlArray.remove(at: 0))
+        coordArray.append(routeUrlArray[0])
+        routeUrlArray.remove(at: 0)
+
         getAllCoordinates(0)
     }
     
@@ -40,25 +44,44 @@ class RoutingViewController: UIViewController {
     }
     
     func showMap(){
-        var count = 0
-        var destination = ""
         var origin = ""
-        var waypoints = "&waypoints="
+        var destination = ""
+        var sortedCoordArray = [String]()
         
         for coordinates in coordArray {
-            print(coordinates)
-            if count == 0 {
-                origin = coordinates
-            } else if count == routeUrlArray.count-1{
-                destination = coordinates
-            } else {
-                waypoints += "\(coordinates)&"
-            }
-            count += 1
+            var splittedOriginCoord = coordinates.split(separator: ",")
+            doubleCoordArray.append([Double(splittedOriginCoord[0])!, Double(splittedOriginCoord[1])!])
         }
         
+        let originCoord = CLLocation(latitude: doubleCoordArray[0][0], longitude: doubleCoordArray[0][1])
+        origin = "\(originCoord.coordinate.latitude),\(originCoord.coordinate.longitude)"
+        var jsonArray = [JSON]()
         
-        let string = "https://www.google.com/maps/dir/?api=1&destination=\(destination)&saddr=\(origin)\(waypoints)&travelmode=driving&dir_action=navigate";
+        for coord in doubleCoordArray.dropFirst() {
+            let otherCoord = CLLocation(latitude: coord[0], longitude: coord[1])
+            let dist = originCoord.distance(from: otherCoord)
+            let json = JSON([
+                "dist": String(dist),
+                "lat": String(coord[0]),
+                "lon": String(coord[1])
+            ])
+            jsonArray.append(json)
+            //print("distancia entre inicio e \(otherCoord) é \(dist)")
+        }
+        
+        var sortedResults = jsonArray.sorted { $0["dist"].doubleValue < $1["dist"].doubleValue }
+        
+        destination = "\(sortedResults.last!["lat"]),\(sortedResults.last!["lon"])"
+        sortedResults.removeLast()
+        var waypoints = ""
+        if (sortedResults.count > 0){
+            waypoints = "waypoints="
+            for json in sortedResults {
+                waypoints += "\(json["lat"]),\(json["lon"])|"
+            }
+        }
+        
+        let string = "https://www.google.com/maps/dir/?api=1&destination=\(destination)&origin=\(origin)&\(waypoints)&travelmode=driving&dir_action=navigate";
         print(string)
         let encoded = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let url = URL(string: encoded)!
@@ -80,34 +103,29 @@ class RoutingViewController: UIViewController {
         var url = URL(string: "https://nominatim.openstreetmap.org/search?q=\(paramEncoded)&format=json")!
         urlArray.append(url)
         let serialQueue = DispatchQueue(label: "serialQueue")
-        for url in urlArray {
-            serialQueue.async{
-                Alamofire.request(url).responseJSON { response in
-                    print("comecando request de \(url)")
-                    if let json = response.result.value {
-                        let result = JSON(json)
-                        if result["erro"].stringValue == "1" {
-                        } else {
-                            var firstResult = result[0]
-                            lat = firstResult["lat"].stringValue
-                            lon = firstResult["lon"].stringValue
-                            self.coordArray.append("\(lat),\(lon)")
-                            print(self.coordArray)
-                            i += 1
-                            print(i)
-                            print(self.routeUrlArray.count)
-                            if self.routeUrlArray.count >= i{
-                                self.showMap()
-                                return
-                            } else {
-                                self.getAllCoordinates(i)
-                            }
-                        }
+        serialQueue.async{
+            Alamofire.request(url).responseJSON { response in
+                if let json = response.result.value {
+                    let result = JSON(json)
+                    if result["erro"].stringValue == "1" {
                     } else {
-                        
+                        var firstResult = result[0]
+                        lat = firstResult["lat"].stringValue
+                        lon = firstResult["lon"].stringValue
+                        print("url \(i) é \(url)")
+                        print("resultado \(i) é \(lat),\(lon)")
+                        self.coordArray.append("\(lat),\(lon)")
+                        i += 1
+                        if self.routeUrlArray.count == i{
+                            self.showMap()
+                            return
+                        } else {
+                            self.getAllCoordinates(i)
+                        }
                     }
+                } else {
+                    
                 }
-               
             }
         }
     }
