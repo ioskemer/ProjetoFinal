@@ -26,6 +26,7 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateData()
         
         self.searchController.searchResultsUpdater = self
         self.searchController.delegate = self
@@ -36,7 +37,8 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
         self.searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Busca por Palavra Chave"
         searchController.searchBar.sizeToFit()
-        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.becomeFirstResponder()
         
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
@@ -52,7 +54,7 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        updateData()
+        
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -114,7 +116,6 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         self.definesPresentationContext = true
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -32,6 +32,7 @@ class BatchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         buyButton.layer.cornerRadius = 5
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @IBAction func goToBuySection(_ sender: Any) {
