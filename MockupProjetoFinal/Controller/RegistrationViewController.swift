@@ -29,7 +29,6 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        goToLoginPage()
 
         // Do any additional setup after loading the view.
     }

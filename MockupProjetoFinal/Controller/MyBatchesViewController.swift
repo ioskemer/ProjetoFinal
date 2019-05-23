@@ -116,12 +116,14 @@ class MyBatchesViewController: UICollectionViewController {
                 
                 let batchTitle = value?["title"] as? String ?? ""
                 let batchDescription = value?["description"] as? String ?? ""
-                let batchStatus = value?["status"] as? String ?? ""
+                let batchStatus = value?["batchStatus"] as? String ?? ""
+                //let batchQuantity = value?["quantity"] as? String ?? ""
                 
                 let newBatch = Batch()
                 newBatch.id = Int(batchId)!
                 newBatch.title = batchTitle
                 newBatch.description = batchDescription
+                //newBatch.quantity = Int(batchQuantity)!
                 newBatch.status = batchStatus
                 
                 if self.batchArray.count == 0 {

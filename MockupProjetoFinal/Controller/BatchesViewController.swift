@@ -87,20 +87,13 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
         cell.productTitle.text = batch.title.capitalized
         cell.productDescription.text = batch.description
         cell.productPrice.text = "R$" + String(batch.price)
-        cell.productAvailableQuantity.text = "\(batch.availableQuantity) unidades."
+        cell.productAvailableQuantity.text = "\(batch.availableQuantity) unidades disponíveis."
         cell.productImage.image = batch.image
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let next = mainStoryboard.instantiateViewController(withIdentifier: "BatchViewController") as! BatchViewController
 
-        var batch = Batch()
-        batch = batchArray[indexPath.row]
-        next.batch = batch
-        
-        self.navigationController?.pushViewController(next, animated: true)
     }
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -209,5 +202,16 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
         searchController.searchBar.resignFirstResponder()
     }
     
-
+    @IBAction func see(_ sender: Any) {
+        let hitPoint = (sender as AnyObject).convert(CGPoint.zero, to: collectionView)
+        if let indexPath = collectionView.indexPathForItem(at: hitPoint) {
+            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let next = mainStoryboard.instantiateViewController(withIdentifier: "BatchViewController") as! BatchViewController
+            
+            var batch = Batch()
+            batch = batchArray[indexPath.row]
+            next.batch = batch
+            self.navigationController?.pushViewController(next, animated: true)
+        }
+    }
 }

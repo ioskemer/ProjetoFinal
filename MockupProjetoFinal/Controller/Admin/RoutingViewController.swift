@@ -100,6 +100,7 @@ class RoutingViewController: UIViewController {
         var lon = ""
         var paramEncoded = routeUrlArray[index]
         paramEncoded = paramEncoded.replacingOccurrences(of: " ", with:"%20")
+        paramEncoded = paramEncoded.folding(options: .diacriticInsensitive, locale: .current)
         var url = URL(string: "https://nominatim.openstreetmap.org/search?q=\(paramEncoded)&format=json")!
         urlArray.append(url)
         let serialQueue = DispatchQueue(label: "serialQueue")
