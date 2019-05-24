@@ -18,8 +18,7 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var selectedQuantity: UILabel!
     @IBOutlet weak var batchQuantity: UISlider!
     @IBOutlet weak var userCard: UIPickerView!
-    @IBOutlet weak var userPassword: UITextField!
-    
+    @IBOutlet weak var totalPrice: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         let availableUnits = batch.availableQuantity
@@ -48,6 +47,7 @@ class BuyBatchViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func sliderValueChanged(_ sender: Any) {
         selectedQuantity.text = String(Int(batchQuantity.value))
+        totalPrice.text = "R$ " + String(batchQuantity.value * batch.price)
     }
     /*
     // MARK: - Navigation

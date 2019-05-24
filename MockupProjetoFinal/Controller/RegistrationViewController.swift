@@ -81,8 +81,8 @@ class RegistrationViewController: UIViewController {
         cep.backgroundColor = UIColor.black
         cep.attributedPlaceholder = NSAttributedString(string: "CEP",
                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-        city.layer.cornerRadius = 7.0
-        city.layer.borderWidth = 2.0
+        cep.layer.cornerRadius = 7.0
+        cep.layer.borderWidth = 2.0
 
         city.layer.cornerRadius = 7.0
         city.layer.borderWidth = 2.0
