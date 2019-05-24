@@ -17,7 +17,11 @@ class HistoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         updateData()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
     func updateData(){
@@ -31,7 +35,6 @@ class HistoryTableViewController: UITableViewController {
                     count = 1
                 } else {
                     let jsonBatch = JSON(batch)
-                    print(jsonBatch["title"].stringValue)
                     let newBatch = Batch()
                     newBatch.title = jsonBatch["title"].stringValue
                     newBatch.status = jsonBatch["batchStatus"].stringValue

@@ -20,10 +20,12 @@ class RoutingViewController: UIViewController {
     var urlArray = [URL]()
     var doubleCoordArray = [[Double]]()
     var userCoordinates = [Double]()
-    
+    var batch = Batch()
+    public static var infoArray: [JSON] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        RoutingViewController.infoArray = batchInfo
         showMap()
     }
     
@@ -37,6 +39,7 @@ class RoutingViewController: UIViewController {
             let vc : PopOverViewController = segue.destination as! PopOverViewController
             
             vc.info = batchInfo
+            vc.batch = batch
         }
     }
     

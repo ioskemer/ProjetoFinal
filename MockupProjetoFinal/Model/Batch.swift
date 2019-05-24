@@ -49,4 +49,9 @@ class Batch {
             }
         })
     }
+    
+    func setDelivered(){
+        let ref = Database.database().reference()
+        ref.child("batches/\(String(self.id))/batchStatus").setValue("delivered")
+    }
 }

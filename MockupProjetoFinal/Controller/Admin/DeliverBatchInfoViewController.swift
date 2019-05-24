@@ -125,6 +125,7 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
         next.batchInfo = batchInfo
         next.navTitle = batch.title
         next.userCoordinates = userCoordinates
+        next.batch = batch
         
         self.navigationController?.pushViewController(next, animated: true)
     }

@@ -4,6 +4,7 @@ import SwiftyJSON
 class PopOverViewController: UITableViewController {
     var teste = ""
     var info: [JSON] = []
+    var batch = Batch()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,7 @@ class PopOverViewController: UITableViewController {
     
     // Returns count of items in tableView
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.info.count;
+        return RoutingViewController.infoArray.count;
     }
     
     
@@ -29,14 +30,25 @@ class PopOverViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            RoutingViewController.infoArray.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            if RoutingViewController.infoArray.count == 0 {
+                batch.setDelivered()
+            }
+        }
+    }
+    
     //Assign values for tableView
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let userName = info[indexPath.row]["name"].stringValue
-        let userCpf = info[indexPath.row]["cpf"].stringValue
-        let userQuantity = info[indexPath.row]["quantity"].stringValue
+        let userName = RoutingViewController.infoArray[indexPath.row]["name"].stringValue
+        let userCpf = RoutingViewController.infoArray[indexPath.row]["cpf"].stringValue
+        let userQuantity = RoutingViewController.infoArray[indexPath.row]["quantity"].stringValue
         
         cell.textLabel?.text = "\(userName) - \(userCpf) - \(userQuantity)"
         
