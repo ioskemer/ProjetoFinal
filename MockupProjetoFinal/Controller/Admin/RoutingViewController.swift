@@ -19,15 +19,12 @@ class RoutingViewController: UIViewController {
     var coordArray = [String]()
     var urlArray = [URL]()
     var doubleCoordArray = [[Double]]()
+    var userCoordinates = [Double]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        coordArray = []
-        coordArray.append(routeUrlArray[0])
-        routeUrlArray.remove(at: 0)
-
-        getAllCoordinates(0)
+        showMap()
     }
     
     @objc func openPopOver() {
@@ -46,18 +43,17 @@ class RoutingViewController: UIViewController {
     func showMap(){
         var origin = ""
         var destination = ""
-        var sortedCoordArray = [String]()
         
         for coordinates in coordArray {
             var splittedOriginCoord = coordinates.split(separator: ",")
             doubleCoordArray.append([Double(splittedOriginCoord[0])!, Double(splittedOriginCoord[1])!])
         }
         
-        let originCoord = CLLocation(latitude: doubleCoordArray[0][0], longitude: doubleCoordArray[0][1])
+        let originCoord = CLLocation(latitude: userCoordinates[0], longitude: userCoordinates[1])
         origin = "\(originCoord.coordinate.latitude),\(originCoord.coordinate.longitude)"
         var jsonArray = [JSON]()
         
-        for coord in doubleCoordArray.dropFirst() {
+        for coord in doubleCoordArray {
             let otherCoord = CLLocation(latitude: coord[0], longitude: coord[1])
             let dist = originCoord.distance(from: otherCoord)
             let json = JSON([
@@ -94,42 +90,7 @@ class RoutingViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
-    func getAllCoordinates(_ index: Int){
-        var i = index
-        var lat = ""
-        var lon = ""
-        var paramEncoded = routeUrlArray[index]
-        paramEncoded = paramEncoded.replacingOccurrences(of: " ", with:"%20")
-        paramEncoded = paramEncoded.folding(options: .diacriticInsensitive, locale: .current)
-        var url = URL(string: "https://nominatim.openstreetmap.org/search?q=\(paramEncoded)&format=json")!
-        urlArray.append(url)
-        let serialQueue = DispatchQueue(label: "serialQueue")
-        serialQueue.async{
-            Alamofire.request(url).responseJSON { response in
-                if let json = response.result.value {
-                    let result = JSON(json)
-                    if result["erro"].stringValue == "1" {
-                    } else {
-                        var firstResult = result[0]
-                        lat = firstResult["lat"].stringValue
-                        lon = firstResult["lon"].stringValue
-                        print("url \(i) é \(url)")
-                        print("resultado \(i) é \(lat),\(lon)")
-                        self.coordArray.append("\(lat),\(lon)")
-                        i += 1
-                        if self.routeUrlArray.count == i{
-                            self.showMap()
-                            return
-                        } else {
-                            self.getAllCoordinates(i)
-                        }
-                    }
-                } else {
-                    
-                }
-            }
-        }
-    }
+    
     /*
     // MARK: - Navigation
 

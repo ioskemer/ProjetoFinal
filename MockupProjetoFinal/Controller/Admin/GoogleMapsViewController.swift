@@ -22,11 +22,15 @@ class GoogleMapsViewController: UIViewController {
         showMarker(position: camera.target)
         
         let address = "Rua Pedro Eloy de Souza 646, Curitiba Pr"
-        
-        let string = "https://www.google.com/maps/dir/?api=1&origin=Rua Pedro Eloy de Souza 656 Curitiba PR&destination=Sao Paulo,Sao Paulo&travelmode=driving&waypoints=PUCPR&waypoint_place_ids=ChIJdUyx15R95kcRj85ZX8H8OAU%7CChIJKzGHdEgM5EcR_OBTT3nQoEA%7CChIJG2LvQNCI4kcRKXNoAsPi1Mc%7CChIJ06tnGbxCCkgRsfNjEQMwUsc"
-        let encoded = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = URL(string: encoded)!
+
        // UIApplication.shared.open(url)
+        
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+        marker.title = "Sydney"
+        marker.snippet = "Australia"
+        marker.map = googleMap
     }
     
     func showMarker(position: CLLocationCoordinate2D){

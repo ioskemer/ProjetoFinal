@@ -12,17 +12,20 @@ import SwiftyJSON
 import GoogleMaps
 import CoreLocation
 import MapKit
+import Alamofire
 
 class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegate {
     var batch = Batch()
     var usersArray = [String]()
     var addressArray = [String]()
+    var coordArray = [String]()
     var batchInfo = [JSON]()
     let ref = Database.database().reference()
     @IBOutlet weak var googleMap: GMSMapView!
     @IBOutlet weak var startRoute: UIButton!
     let locationManager = CLLocationManager()
     var userCoordinates = [Double]()
+    var markerArray = [[Double]]()
     var locationEnable = false
     
     override func viewDidLoad() {
@@ -37,17 +40,6 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
         self.navigationItem.title = batch.title
         
         getBatches()
-        
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
-        
-        googleMap = mapView
     }
 
     func getBatches(){
@@ -71,7 +63,7 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
     
     func loadBatches(){
         addressArray = []
-        addressArray.append("\(userCoordinates.first!),\(userCoordinates.last!)")
+        //addressArray.append("\(userCoordinates.first!),\(userCoordinates.last!)")
         var count = 0
         let unique = Array(Set(usersArray))
         for userId in unique {
@@ -85,7 +77,7 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
                 let jsonUser = JSON(value!)
 
                 let address = jsonUser["address"].stringValue
-                let cep = jsonUser["cep"].stringValue
+                //let cep = jsonUser["cep"].stringValue
                 let number = jsonUser["number"].stringValue
                 let city = jsonUser["city"].stringValue
                 
@@ -94,7 +86,7 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
                 self.addressArray.append(fullAddress)
 
                 if count == unique.count-1 {
-                    self.startRoute.isEnabled = true
+                    self.getAllCoordinates(0)
                 }
                 
                 count += 1
@@ -113,30 +105,74 @@ class DeliverBatchInfoViewController: UIViewController, CLLocationManagerDelegat
     */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-
+        let newLocation = locations.last
         userCoordinates = [locValue.latitude, locValue.longitude]
-    //
-    //        let address = CLGeocoder.init()
-    //
-    //        address.reverseGeocodeLocation(CLLocation.init(latitude: userCoordinates.first!, longitude:userCoordinates.last!)) { (places, error) in
-    //            if error == nil{
-    //                if let place = places{
-    //                    print("lugar eh")
-    //                    print(place)
-    //                }
-    //            }
-    //        }
+        googleMap.camera = GMSCameraPosition.camera(withTarget: newLocation!.coordinate, zoom: 11.0)
+        
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D.init(latitude: newLocation!.coordinate.latitude, longitude: newLocation!.coordinate.longitude)
+        marker.title = "Seu Local"
+        marker.snippet = "Voce está aqui!"
+        marker.map = googleMap
     }
 
     @IBAction func startRoute(_ sender: Any) {
-        print(userCoordinates)
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let next = mainStoryboard.instantiateViewController(withIdentifier: "RoutingViewController") as! RoutingViewController
 
+        next.coordArray = coordArray
         next.routeUrlArray = addressArray
         next.batchInfo = batchInfo
         next.navTitle = batch.title
+        next.userCoordinates = userCoordinates
         
         self.navigationController?.pushViewController(next, animated: true)
+    }
+    
+    // Transform array of address in array of coord
+    func getAllCoordinates(_ index: Int){
+        var i = index
+        var lat = ""
+        var lon = ""
+        var paramEncoded = addressArray[index]
+        paramEncoded = paramEncoded.replacingOccurrences(of: " ", with:"%20")
+        paramEncoded = paramEncoded.folding(options: .diacriticInsensitive, locale: .current)
+        let url = URL(string: "https://nominatim.openstreetmap.org/search?q=\(paramEncoded)&format=json")!
+        let serialQueue = DispatchQueue(label: "serialQueue")
+        serialQueue.async{
+            Alamofire.request(url).responseJSON { response in
+                if let json = response.result.value {
+                    let result = JSON(json)
+                    if result["erro"].stringValue == "1" {
+                    } else {
+                        var firstResult = result[0]
+                        lat = firstResult["lat"].stringValue
+                        lon = firstResult["lon"].stringValue
+                        self.coordArray.append("\(lat),\(lon)")
+                        self.markerArray.append([Double(lat)!, Double(lon)!])
+                        i += 1
+                        if self.addressArray.count == i{
+                            self.startRoute.isEnabled = true
+                            self.addMarkersToMap()
+                            return
+                        } else {
+                            self.getAllCoordinates(i)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func addMarkersToMap(){
+        var index = 0
+        for batch in batchInfo {
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D.init(latitude: markerArray[index][0], longitude: markerArray[index][1])
+            marker.title = batch["name"].stringValue
+            marker.snippet = batch["quantity"].stringValue + " unidades."
+            marker.map = googleMap
+            index += 1
+        }
     }
 }
