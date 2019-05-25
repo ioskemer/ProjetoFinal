@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftyJSON
+import CoreData
 
 class BatchesViewController: UICollectionViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     var ref = DatabaseReference()
@@ -23,10 +24,12 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
     let searchController = UISearchController(searchResultsController: nil)
     var searchActive : Bool = false
     private let refreshControl = UIRefreshControl()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateData()
+        cacheData()
         
         self.searchController.searchResultsUpdater = self
         self.searchController.delegate = self
@@ -83,7 +86,6 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
             batch = batchArray[indexPath.row]
         }
         
-        print(batch.image)
         cell.productTitle.text = batch.title.capitalized
         cell.productDescription.text = batch.description
         cell.productPrice.text = "R$" + String(batch.price)
@@ -212,6 +214,25 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
             batch = batchArray[indexPath.row]
             next.batch = batch
             self.navigationController?.pushViewController(next, animated: true)
+        }
+    }
+    
+    func cacheData(){
+        for batch in batchArray{
+            var cachedBatch = CacheBatch(context: context)
+            cachedBatch.title = batch.title
+            cachedBatch.batchDescription = batch.description
+            cachedBatch.id = Int64(batch.id)
+            cachedBatch.availableQuantity = Int64(batch.availableQuantity)
+            cachedBatch.price = batch.price
+            cachedBatch.image = batch.image.pngData()
+            cachedBatch.status = batch.status
+            
+            do {
+                try context.save()
+            } catch {
+                print("Erro ao salvar contexto")
+            }
         }
     }
 }

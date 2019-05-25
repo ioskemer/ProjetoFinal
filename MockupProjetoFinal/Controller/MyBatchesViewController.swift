@@ -62,7 +62,7 @@ class MyBatchesViewController: UICollectionViewController {
         batch = batchArray[indexPath.row]
         next.batch = batch
         
-        self.navigationController?.pushViewController(next, animated: true)
+        //self.navigationController?.pushViewController(next, animated: true)
     }
     /*
      // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -132,7 +132,7 @@ class MyBatchesViewController: UICollectionViewController {
                 
                 for batch in self.batchArray {
                     if batch.id == newBatch.id {
-                        
+                        print("mesmo batch")
                     } else {
                         self.batchArray.append(newBatch)
                     }
