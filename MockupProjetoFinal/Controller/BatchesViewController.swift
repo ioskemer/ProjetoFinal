@@ -83,12 +83,16 @@ class BatchesViewController: UICollectionViewController, UISearchControllerDeleg
         if searchActive {
             batch = filtered[indexPath.row]
         } else {
-            batch = batchArray[indexPath.row]
+            if batchArray.count < indexPath.row{
+                
+            } else {
+                batch = batchArray[indexPath.row]
+            }
         }
         
         cell.productTitle.text = batch.title.capitalized
         cell.productDescription.text = batch.description
-        cell.productPrice.text = "R$" + String(batch.price)
+        cell.productPrice.text = "R$" + String(batch.price) + " un"
         cell.productAvailableQuantity.text = "\(batch.availableQuantity) unidades disponíveis."
         cell.productImage.image = batch.image
         return cell
